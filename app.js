@@ -1,0 +1,1 @@
+/* var URLParser = require('./src/router'); */
