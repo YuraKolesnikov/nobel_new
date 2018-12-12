@@ -27,7 +27,20 @@ Model.prototype._fireDataLoadedEvent = function() {
     console.log(`Event '${oEvent.type}' fired!`);
     document.dispatchEvent(oEvent);
 }
-Model.prototype._prepareData = function() {}
+Model.prototype._prepareData = function(sType) {
+    this.aDataForRender = [];
+    sType === 'dropdown' ? this._generateId() : 1
+    this._oData.forEach(function(item) {
+        return item.id !== undefined && item.born !== '0000-00-00' ? 
+            this.aDataForRender.push(
+                sType === 'table' ? 
+                    this._generateObject(item.id) : 
+                sType === 'dropdown' ? 
+                    this._generateSelect(item.id) : 0) : 0
+    }, this)
+    console.log('New data: ')
+    return this.aDataForRender;
+}
 
 Model.prototype.getAge = function(sBorn, sDied) {
     if (sDied !== '0000-00-00') {
@@ -40,59 +53,100 @@ Model.prototype.getAge = function(sBorn, sDied) {
 }
 
 Model.prototype._getObjectById = function(sID) {
-    var oLaureate = this._oData.find(function(element) {
+    var oObject = this._oData.find(function(element) {
         return element.id == sID
     })
-    return oLaureate;
+    return oObject;
 }
-
-Model.prototype.validateValue = function (value) {
-    value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;
-    return value;
+Model.prototype._generateId = function() {
+    this._oData = this._oData.map(function(item, index) {
+        return {
+            id: index,
+            name: item.name,
+            code: item.code
+        }
+    })
+    return this._oData;
+}
+Model.prototype._validateValue = function (value) {
+    return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;
 }
 
 Model.prototype._generateObject = function(sID) {
     var oSourceObject = this._getObjectById(sID);
-    var oNewObject = {};
-    oNewObject.firstname    = this.validateValue(oSourceObject.firstname);
-    oNewObject.surname      = this.validateValue(oSourceObject.surname);
-    oNewObject.born         = this.validateValue(oSourceObject.born);
-    oNewObject.died         = this.validateValue(oSourceObject.died);
-    oNewObject.age          = this.getAge(oSourceObject.born, oSourceObject.died);
-    oNewObject.country      = this.validateValue(oSourceObject.bornCountry);
-    oNewObject.description1 = 'Born in ' + this.validateValue(oSourceObject.bornCity) + ', ' + this.validateValue(oSourceObject.bornCountry);
-    oNewObject.description2 = 'Died in ' + this.validateValue(oSourceObject.diedCity) + ', ' + this.validateValue(oSourceObject.diedCountry);
-    oNewObject.infoTitle    = 'Prizes: ';
-    oNewObject.info         = oSourceObject.prizes;
-    
-    /*  TODO:
-        Расписать создание массива info */
+        var oNewObject = {
+            id: this._validateValue(oSourceObject.id) || '',
+            name: this._validateValue(oSourceObject.firstname) || this._validateValue(oSourceObject.name),
+            surname: this._validateValue(oSourceObject.surname) || this._validateValue(oSourceObject.lastname),
+            born: this._validateValue(oSourceObject.born),
+            died: this._validateValue(oSourceObject.died),
+            age: this.getAge(oSourceObject.born, oSourceObject.died),
+            country: this._validateValue(oSourceObject.bornCountry),
+            filterAnchor: this._validateValue(oSourceObject.bornCountryCode),
+            description1: 'Born in ' + this._validateValue(oSourceObject.bornCity) + ', ' + this._validateValue(oSourceObject.bornCountry),
+            description2: 'Died in ' + this._validateValue(oSourceObject.diedCity) + ', ' + this._validateValue(oSourceObject.diedCountry),
+            infoTitle: 'Prizes: ',
+            info: oSourceObject.prizes.map(function(infoPiece) {
+                return {
+                    year: infoPiece.year,
+                    subject: infoPiece.category,
+                    caption: infoPiece.motivation,
+                    additionalInfo: infoPiece.affiliations.map(function(location) {
+                        return {
+                            name: location.name,
+                            city: location.city,
+                            country: location.country
+                        }
+                    })
+                }
+            })
+        };
     return oNewObject;
+}
+
+Model.prototype._generateSelect = function(sID) {
+    var oObject = this._getObjectById(sID);
+    return oObject;
 }
 /* Public methods */
 Model.prototype.filterData = function(oURLParser) {
     var sCategory       = oURLParser.category;
     var sCountryCode    = oURLParser.country;
     var sYear           = oURLParser.year;
-
-    var aFilteredData = this._oData
-        .filter(function (oLaureate) {
+    var aInitialData    = this._prepareData();
+    var aFilteredData   = aInitialData
+        .filter(function (oObject) {
             sCategory === 'all' ? sCategory = '' : sCategory
             sYear === 'all' ? sYear = '' : sYear
-            var oLaureatePrizes = oLaureate.prizes.filter(function (prize) {
-                return (sCategory && prize.category !== sCategory ? false : true) && (sYear && prize.year != sYear ? false : true)
+            var oInfo = oObject.info.filter(function (item) {
+                return (sCategory && item.subject !== sCategory ? false : true) && (sYear && item.year != sYear ? false : true)
             })
-            return oLaureatePrizes.length > 0;
+            return oInfo.length > 0;
         })
-        .filter(function (oLaureate) {
+        .filter(function (oObject) {
             sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
-            return sCountryCode && oLaureate.bornCountryCode != sCountryCode ? false : true
+            return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true
         });
     return aFilteredData;
 }
 
-Model.prototype.getData = function() {
-    return this._prepareData();
+Model.prototype.sortData = function(key, oURLParser) {
+    var oData = this.filterData(oURLParser)
+    this.ascending = !this.ascending
+    if (this.ascending === true) {
+        oData.sort(function(a, b) {
+            return a[key] > b[key] ? 1 : -1
+        })
+    } else {
+        oData.sort(function(a, b) {
+            return a[key] < b[key] ? 1 : -1
+        })
+    }
+    return oData;
+}
+
+Model.prototype.getData = function(sType) {
+    return this._prepareData(sType);
 }
 
 module.exports = Model;
