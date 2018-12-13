@@ -38,7 +38,8 @@ Model.prototype._prepareData = function(sType) {
                 sType === 'dropdown' ? 
                     this._generateSelect(item.id) : 0) : 0
     }, this)
-    console.log('New data: ')
+    /* For debugging */
+    sType === 'dropdown' ? console.log('New dropdown: ') : console.log('New table: ')
     return this.aDataForRender;
 }
 
@@ -109,13 +110,13 @@ Model.prototype._generateSelect = function(sID) {
     return oObject;
 }
 /* Public methods */
-Model.prototype.filterData = function(oURLParser) {
+Model.prototype.filterData = function(oURLParser, sType) {
     var sCategory       = oURLParser.category;
     var sCountryCode    = oURLParser.country;
     var sYear           = oURLParser.year;
-    var aInitialData    = this._prepareData();
+    var aInitialData    = this._prepareData(sType);
     var aFilteredData   = aInitialData
-        .filter(function (oObject) {
+        .filter(function(oObject) {
             sCategory === 'all' ? sCategory = '' : sCategory
             sYear === 'all' ? sYear = '' : sYear
             var oInfo = oObject.info.filter(function (item) {
@@ -127,11 +128,12 @@ Model.prototype.filterData = function(oURLParser) {
             sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
             return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true
         });
+    console.log(oURLParser)
     return aFilteredData;
 }
 
-Model.prototype.sortData = function(key, oURLParser) {
-    var oData = this.filterData(oURLParser)
+Model.prototype.sortData = function(oURLParser, key, sType) {
+    var oData = this.filterData(oURLParser, sType)
     this.ascending = !this.ascending
     if (this.ascending === true) {
         oData.sort(function(a, b) {
@@ -145,8 +147,8 @@ Model.prototype.sortData = function(key, oURLParser) {
     return oData;
 }
 
-Model.prototype.getData = function(sType) {
-    return this._prepareData(sType);
+Model.prototype.getData = function(oURLParser, sType) {
+    return this.filterData(oURLParser, sType);
 }
 
 module.exports = Model;
