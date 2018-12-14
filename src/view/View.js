@@ -1,4 +1,4 @@
-function CoViewntrol() {
+function View() {
     this.oTable = document.getElementById(sTableId)
 }
 
