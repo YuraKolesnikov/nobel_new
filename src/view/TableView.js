@@ -23,6 +23,12 @@ TableView.prototype._renderHeader = function() {
     oCountry    = this._createElement('td', { id: 'country',    'data-id': '6' }, 'Country'),
     oInfo       = this._createElement('td', { id: 'info',       'data-id': '7' }, 'Info');
     var oRow    = this._createElement('td', {}, oID, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
+    Array.from(oRow.children).forEach(function(headerCell) {
+        headerCell.addEventListener('click', function() {
+            /* сортировка по этому элементу */
+            console.log(headerCell.id)
+        })
+    })
     this._oHeader.appendChild(oRow)
     return this._oHeader;
 }
@@ -38,8 +44,8 @@ TableView.prototype._renderContent = function(oData) {
         oDied       = this._createElement('td', {}, item.died),
         oAge        = this._createElement('td', {}, item.age.toString()),
         oCountry    = this._createElement('td', {}, item.country),
-        oInfo   = this._createElement('td', {}, item.info[0].year + ', ' + item.info[0].subject);
-        var oRow = this._createElement('tr', {}, oID, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo);
+        oInfo       = this._createElement('td', {}, item.info[0].year + ', ' + item.info[0].subject);
+        var oRow = this._createElement('tr', { id: index, 'data-id': index }, oID, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo);
         this._oTable.appendChild(oRow);
     }, this)
     return this._oTable;

@@ -133,6 +133,7 @@ Model.prototype.filterData = function(oURLParser, sType) {
 }
 
 Model.prototype.sortData = function(oURLParser, key, sType) {
+    
     var oData = this.filterData(oURLParser, sType)
     this.ascending = !this.ascending
     if (this.ascending === true) {
@@ -148,6 +149,7 @@ Model.prototype.sortData = function(oURLParser, key, sType) {
 }
 
 Model.prototype.getData = function(oURLParser, sType) {
+    this.oURLParser = oURLParser || ''
     return this.filterData(oURLParser, sType);
 }
 

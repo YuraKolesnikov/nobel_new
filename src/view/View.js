@@ -1,6 +1,4 @@
-function View() {
-    this.oTable = document.getElementById(sTableId)
-}
+function View() {}
 
 View.prototype._createElement = function(tag, props) {
     var element = document.createElement(tag);
