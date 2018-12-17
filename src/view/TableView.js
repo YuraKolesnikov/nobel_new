@@ -13,7 +13,7 @@ TableView.prototype.renderTable = function(oData) {
     this._renderContent(oData);
 }
 
-TableView.prototype._renderHeader = function() {
+TableView.prototype._renderHeader = function(fnCallback) {
     var oID     = this._createElement('td', { id: 'id',         'data-id': '0' }, 'ID'),
     oName       = this._createElement('td', { id: 'name',       'data-id': '1' }, 'Name'),
     oSurname    = this._createElement('td', { id: 'surname',    'data-id': '2' }, 'Surname'),
@@ -24,10 +24,7 @@ TableView.prototype._renderHeader = function() {
     oInfo       = this._createElement('td', { id: 'info',       'data-id': '7' }, 'Info');
     var oRow    = this._createElement('td', {}, oID, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
     Array.from(oRow.children).forEach(function(headerCell) {
-        headerCell.addEventListener('click', function() {
-            /* сортировка по этому элементу */
-            console.log(headerCell.id)
-        })
+        headerCell.addEventListener('click', fnCallback)
     })
     this._oHeader.appendChild(oRow)
     return this._oHeader;
