@@ -1,0 +1,9 @@
+var Model = require('./model/Model');
+var DropdownModel = require('./model/DropdownModel');
+var TableModel = require('./model/TableModel');
+var model = new Model('data/laureate.json', 'dataLoaded')
+var dropdownModel = new DropdownModel('data/country.json', 'dropdownDataLoaded');
+var tableModel = new TableModel('data/laureate.json', 'tableDataLoaded')
+//setTimeout(() => console.log(model.getData()), 1000)
+setTimeout(() => console.log(dropdownModel.getData()), 1000)
+//setTimeout(() => console.log(tableModel.filterData({first: 'all', second: 'all', third: 'all'})), 1000)
