@@ -23,4 +23,4 @@ Controller.prototype.filterData = function(id) {
     console.log(`Filtering ${id} from data`)
 }
 
-module.exports = Controller;
+export default Controller;
