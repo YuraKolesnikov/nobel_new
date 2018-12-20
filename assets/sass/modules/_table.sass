@@ -1,0 +1,49 @@
+.right 
+    width: 75vw
+    position: relative
+    left: 20%
+table
+    width: 100%
+    table-layout: fixed
+  
+.table-header
+    +transparentBackground(0.3)
+   
+.table-content
+    height: 81vh
+    overflow-x: auto
+    margin-top: 0px
+    border: 1px solid rgba(255,255,255,0.3)
+  
+th
+    padding: 20px 15px
+    text-align: left
+    font-weight: 600
+    font-size: 18px
+    color: #fff
+    text-transform: uppercase
+    +pointer
+
+td
+    padding: 20px 15px
+    text-align: left
+    vertical-align:middle
+    font-weight: 300
+    font-size: 16px
+    color: #fff
+    +pointer
+    border-bottom: solid 1px rgba(255,255,255,0.1)
+th:nth-child(1),
+td:nth-child(1),
+th:nth-child(6),
+td:nth-child(6)
+    width: 70px
+
+  
+::-webkit-scrollbar
+    width: 6px 
+::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+
+::-webkit-scrollbar-thumb
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)

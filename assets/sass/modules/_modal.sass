@@ -1,0 +1,78 @@
+/* Styling modal window */
+#modal_window 
+    position: absolute
+    width: 800px
+    height: 300px
+    left: 50%
+    top: 30%
+    transform: translate(-50%)
+    background-color: white
+    color: black
+    text-align: center
+    +transition(.5s)
+    &.visible 
+        opacity: 1
+        z-index: 1000
+    &.hidden 
+        opacity: 0
+        z-index: -1000
+
+#modal
+    padding: 30px
+    width: 70%
+    height: 100%
+    text-align: left
+    +noMargin
+    &_head 
+        flex-flow: column nowrap
+        justify-content: space-between
+    &_life 
+        color: $darkGray
+    &_body 
+        padding: 10px 10px 20px 0px
+.modal-hr 
+    height: 1px
+    background-color: $darkGray
+    border: none
+    width: 100%
+    +noPadding
+    +noMargin
+
+.prizes-caption 
+    padding-top: 10px
+
+#prizes 
+    padding: 15px 0
+
+#prize 
+    padding-top: 15px
+
+#prize_list 
+    padding-bottom: 10px
+
+#learn_more 
+    text-decoration: none
+    color: $darkGray
+    padding-bottom: 0px
+    border-bottom: 2px solid transparent
+    +transition(.35s)
+
+#learn_more:hover 
+    color: $darkGrayHover
+    padding-bottom: 8px
+    border-bottom: 2px solid $darkGrayHover
+
+button#close 
+    position: absolute
+    top: 1%
+    left: 96%
+    background-color: transparent
+    border: none
+    transform: rotate(45deg) translateZ(0)
+    font-size: 20px
+    color: $darkGray
+    margin-right: 5px
+    +pointer
+    +transition(.35s)
+    &:hover 
+        transform: translateY(-2px) rotate(45deg) translateZ(0)
