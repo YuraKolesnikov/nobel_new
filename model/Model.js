@@ -18,17 +18,17 @@ Model.prototype._loadData = function(_sResourceUrl) {
             if (type.indexOf('text') !== 1) {
                 this._oData = JSON.parse(request.responseText);
             }
-            this._fireDataLoadedEvent();
+            //this._fireDataLoadedEvent();
         }
     }.bind(this);
     request.send()
 }
 
-Model.prototype._fireDataLoadedEvent = function() {
-    var oEvent = new Event(this._sEventName);
-    console.log('Event ' + oEvent.type + ' fired!');
-    document.dispatchEvent(oEvent);
-}
+//Model.prototype._fireDataLoadedEvent = function() {
+//    var oEvent = new Event(this._sEventName);
+//    console.log('Event ' + oEvent.type + ' fired!');
+//    document.dispatchEvent(oEvent);
+//}
 
 Model.prototype._validateValue = function (value) {
     return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;

@@ -1,7 +1,7 @@
 var EventEmitter = require('../controller/EventEmitter')
 function View() {
     this.sortButton = document.getElementById('name')
-    this.filterButton = document.getElementById('chemics')
+    this.filterButton = document.getElementById('chemistry')
     this.events = {}
     /*  TODO:
     Удалить после тестирования */
