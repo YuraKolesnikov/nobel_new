@@ -1,11 +1,6 @@
 var Model = require('./Model')
 function DropdownModel(_sResourceUrl, _sEventName){
     this._sEventName = _sEventName;
-    this._constructor(_sResourceUrl);
-}
-
-DropdownModel.prototype._constructor = function(_sResourceUrl) {
-    this._super.call(_sResourceUrl)
 }
 DropdownModel.prototype = Object.create(Model.prototype);
 DropdownModel.prototype._super = Model;

@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     rigger = require('gulp-rigger'),
     uglify = require('gulp-uglify'),
+    babel = require("gulp-babel"),
     browserify = require('gulp-browserify'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -30,6 +31,7 @@ gulp.task('js:build', function() {
             insertGlobals : true,
             debug : !gulp.env.production
         }))
+        .pipe(babel())
         //.pipe(uglify()) /* Remove comment for build */
         .pipe(gulp.dest('build/'))
         .pipe(reload({stream: true}));

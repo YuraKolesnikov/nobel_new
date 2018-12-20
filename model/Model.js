@@ -7,7 +7,6 @@ function Model(_sResourceUrl, _sEventName) {
 Model.prototype._constructor = function(_sResourceUrl) {
     this._loadData(_sResourceUrl);
 }
-
 Model.prototype._loadData = function(_sResourceUrl) {
     this._sResourceUrl  = _sResourceUrl;
     var request = new XMLHttpRequest();
@@ -18,6 +17,7 @@ Model.prototype._loadData = function(_sResourceUrl) {
             if (type.indexOf('text') !== 1) {
                 this._oData = JSON.parse(request.responseText);
             }
+
             //this._fireDataLoadedEvent();
         }
     }.bind(this);

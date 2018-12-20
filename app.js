@@ -12,3 +12,9 @@ var View = require('./view/View')
 var view = new View();
 var Controller = require('./controller/Controller')
 var controller = new Controller(tableModel, view)
+
+const sayHello = (name) => {
+    console.log(`Oh hi ${name}!`)
+}
+
+sayHello('Mark')
