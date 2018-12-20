@@ -1,16 +1,15 @@
 function EventEmitter() {
-    this.oEvents = {}
+    this.events = {}
 }
 
-EventEmitter.prototype.on = function(sType, fnCallback) {
-    this.oEvents[sType] = this.oEvents[sType] || []
-    this.oEvents[sType].push(fnCallback)
+EventEmitter.prototype.on = function(type, callback) {
+    this.events[type] = this.events[type] || []
+    this.events[type].push(callback)
 }
 
-EventEmitter.prototype.emit = function(sType, oArgument) {
-    this.oEvents[sType]
-    ? this.oEvents[sType].forEach(function(fnCallback) { return fnCallback(oArgument) })
-    : 0
+EventEmitter.prototype.emit = function(type, arg) {
+    this.events[type] ? this.events[type].forEach(callback => callback(arg)) : 0
 }
+
 
 module.exports = EventEmitter;
