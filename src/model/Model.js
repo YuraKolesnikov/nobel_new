@@ -1,9 +1,8 @@
 import EventEmitter from '../helpers'
 class Model extends EventEmitter {
-    constructor(_sResourceUrl, _sEventName) {
+    constructor(_sResourceUrl) {
         super();
         this._sResourceUrl = _sResourceUrl;
-        this._sEventName = _sEventName;
         this._oData = [];
         this._loadData(_sResourceUrl)
     }

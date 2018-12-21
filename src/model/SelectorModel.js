@@ -1,9 +1,8 @@
 import Model from './Model'
-class DropdownModel extends Model {
-    constructor(_sResourceUrl, _sEventName) {
-        super()
+class SelectorModel extends Model {
+    constructor(_sResourceUrl) {
+        super(_sResourceUrl)
         this._sResourceUrl = _sResourceUrl;
-        this._sEventName = _sEventName;
     }
     _generateId() {
         this._oData = this._oData
@@ -20,4 +19,4 @@ class DropdownModel extends Model {
     }
 }
 
-export default DropdownModel;
+export default SelectorModel;

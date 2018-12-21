@@ -1,8 +1,8 @@
 import View from './View'
 class TableView extends View {
-    constructor(tableName) {
+    constructor(sTableName) {
         super()
-        this.oTable = document.getElementById(`${tableName}Table`)
+        this.oTable = document.getElementById(`${sTableName}Table`)
         
     }
     _reduceObjectToArray(aArray) {

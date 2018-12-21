@@ -1,7 +1,7 @@
 import Model from './Model'
 class TableModel extends Model {
     constructor(_sResourceUrl) {
-        super(_sResourceUrl, 'tableDataLoaded')
+        super(_sResourceUrl)
         this._aFilteredData = [];
     }
     _validateValue(sValue) {

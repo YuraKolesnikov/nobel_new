@@ -36,7 +36,6 @@ class View extends EventEmitter {
     }
     _clearContainer() {
         while(this.firstChild) { this.removeChild(this.firstChild) }
-        console.log(`${this.id} cleared!`)
         return this;
     }
 }
