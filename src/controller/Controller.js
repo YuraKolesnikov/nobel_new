@@ -7,11 +7,15 @@ function Controller(model, view) {
         second: 'all',
         third: 'all'
     }
+    model.on('dataLoaded', this._loadData.bind(this))
     view.on('sortData', this.sortData.bind(this))
     view.on('filterData', this.filterData.bind(this))
-    console.log(this.model)
+    console.log(this.model.filterData(this._oFilter))
 }
-
+Controller.prototype._loadData = function(aData) {
+    console.log('Loading data...')
+    console.log(this.model.filterData(this._oFilter))
+}
 Controller.prototype.sortData = function(id) {
     console.log(this.model.sortData(id))
     console.log(`Sorting data by ${id}`)

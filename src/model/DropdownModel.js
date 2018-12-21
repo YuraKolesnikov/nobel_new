@@ -7,14 +7,12 @@ class DropdownModel extends Model {
     }
     _generateId() {
         this._oData = this._oData
-            .map(function (item, index) {
-                return {
+            .map((item, index) => ({
                     id: index,
                     name: item.name,
                     code: item.code
-                };
-            })
-            .sort(function (a, b) { return a.name > b.name ? 1 : -1; });
+                }))
+            .sort((a, b)  => a.name > b.name ? 1 : -1);
         return this._oData;
     }
     getData() {

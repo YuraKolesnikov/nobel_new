@@ -1,18 +1,14 @@
 import Model from './Model'
 class TableModel extends Model {
-    constructor(_sResourceUrl, _sEventName) {
-        super()
-        this._sEventName = _sEventName;
-        this._constructor(_sResourceUrl);
+    constructor(_sResourceUrl) {
+        super(_sResourceUrl, 'tableDataLoaded')
         this._aFilteredData = [];
-    }
-    _constructor(_sResourceUrl) {
-        this._super.call(_sResourceUrl);
     }
     _validateValue(sValue) {
         return sValue === undefined ? sValue = 'Unknown' : sValue === '0000-00-00' ? sValue = '-' : sValue;
     }
     _getAge(sBorn, sDied) {
+        let nAge;
         if (sDied !== '0000-00-00') {
             nAge = parseInt(sDied, 10) - parseInt(sBorn, 10);
         }
@@ -23,8 +19,7 @@ class TableModel extends Model {
         return nAge;
     }
     _prepareData() {
-        var aMutatedData = this._oData.map(function (oItem) {
-            return {
+        const aMutatedData = this._oData.map(oItem => ({
                 id: this._validateValue(oItem.id) || '',
                 name: this._validateValue(oItem.firstname) || this._validateValue(oItem.name),
                 surname: this._validateValue(oItem.surname) || this._validateValue(oItem.lastname),
@@ -50,24 +45,23 @@ class TableModel extends Model {
                         })
                     };
                 })
-            };
-        }, this);
+        }), this)
         return aMutatedData;
     }
     filterData(oFilter) {
-        var sCategory = oFilter.first;
-        var sCountryCode = oFilter.second;
-        var sYear = oFilter.third;
+        let sCategory = oFilter.first;
+        let sCountryCode = oFilter.second;
+        let sYear = oFilter.third;
         this._aFilteredData = this._prepareData()
-            .filter(function (oObject) {
+            .filter(oObject => {
                 sCategory === 'all' ? sCategory = '' : sCategory;
                 sYear === 'all' ? sYear = '' : sYear;
-                var oInfo = oObject.info.filter(function (item) {
+                const oInfo = oObject.info.filter(item => {
                     return (sCategory && item.subject !== sCategory ? false : true) && (sYear && item.year != sYear ? false : true);
                 });
                 return oInfo.length > 0;
             })
-            .filter(function (oObject) {
+            .filter(oObject => {
                 sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
                 return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true;
             });
@@ -75,18 +69,13 @@ class TableModel extends Model {
         return this._aFilteredData;
     }
     sortData(key) {
-        var oData = this._aFilteredData;
+        let oData = this._aFilteredData;
+        key = key === undefined ? 'id' : key
+        console.log(key)
         this.ascending = !this.ascending;
-        if (this.ascending === true) {
-            oData.sort(function (a, b) {
-                return a[key] > b[key] ? 1 : -1;
-            });
-        }
-        else {
-            oData.sort(function (a, b) {
-                return a[key] < b[key] ? 1 : -1;
-            });
-        }
+        this.ascending === true
+        ? oData.sort((a, b) => a[key] > b[key] ? 1 : -1)
+        : oData.sort((a, b) => a[key] < b[key] ? 1 : -1);
         return oData;
     }
 }

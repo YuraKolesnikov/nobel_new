@@ -1,7 +1,8 @@
-import { EventEmitter } from '../helpers';
+import EventEmitter from '../helpers';
 class View extends EventEmitter {
     constructor() {
         super()
+        /* TODO: Здесь будут массивы с кнопками и селекты с опциями */
         this.sortButton = document.getElementById('name');
         this.filterButton = document.getElementById('chemistry');
         this.addEventListeners();
@@ -34,12 +35,5 @@ class View extends EventEmitter {
         return element;
     }
 }
-
-View.prototype = Object.create(prototype);
-View.prototype._super = EventEmitter;
-
-
-
-
 
 export default View;

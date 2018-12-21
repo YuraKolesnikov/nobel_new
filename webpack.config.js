@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/app',
 
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -13,8 +13,7 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        watchContentBase: true
+        contentBase: path.join(__dirname, 'public')
     },
 
     devtool: 'cheap-eval-source-map' // remove for build
