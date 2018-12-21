@@ -16,7 +16,6 @@ class Model extends EventEmitter {
                 const type = request.getResponseHeader('Content-Type');
                 if (type.indexOf('text') !== 1) {
                     this._oData = JSON.parse(request.responseText);
-                    console.log(this._oData)
                 }
                 this.emit('dataLoaded')
             }

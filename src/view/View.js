@@ -5,9 +5,9 @@ class View extends EventEmitter {
         /* TODO: Здесь будут массивы с кнопками и селекты с опциями */
         this.sortButton = document.getElementById('name');
         this.filterButton = document.getElementById('chemistry');
-        this.addEventListeners();
+        this._addEventListeners();
     }
-    addEventListeners() {
+    _addEventListeners() {
         this.sortButton.addEventListener('click', this.handleSort.bind(this));
         this.filterButton.addEventListener('click', this.handleFilter.bind(this));
     }
@@ -17,7 +17,7 @@ class View extends EventEmitter {
     handleFilter() {
         this.emit('filterData', this.filterButton.id);
     }
-    createElement(tag, props, ...children) {
+    _createElement(tag, props, ...children) {
         const element = document.createElement(tag);
         Object.keys(props).forEach(key => {
             key.startsWith('data-')
@@ -33,6 +33,11 @@ class View extends EventEmitter {
             element.appendChild(child);
         });
         return element;
+    }
+    _clearContainer() {
+        while(this.firstChild) { this.removeChild(this.firstChild) }
+        console.log(`${this.id} cleared!`)
+        return this;
     }
 }
 
