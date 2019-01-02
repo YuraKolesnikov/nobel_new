@@ -14,12 +14,11 @@ module.exports = {
           { test: /\.sass$/, use: [ 
               { loader: 'style-loader' }, 
               { loader: 'css-loader' }, 
-              { loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
+              //{ loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
               { loader: 'sass-loader' }] }
         ]
     },
     devServer: {
-        host: '0.0.0.0',
         contentBase: path.resolve(__dirname, 'public'),
         watchContentBase: true,
         overlay: true
