@@ -19,6 +19,12 @@ class View extends EventEmitter {
     }
     _createElement(tag, props, ...children) {
         const element = document.createElement(tag);
+        if (!String.prototype.startsWith) {
+            String.prototype.startsWith = function(searchString, position) {
+              position = position || 0;
+              return this.indexOf(searchString, position) === position;
+            };
+        }
         Object.keys(props).forEach(key => {
             key.startsWith('data-')
             ? element.setAttribute(key, props[key])
