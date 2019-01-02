@@ -11,8 +11,22 @@
 
 =noPadding
     padding: 0
+
 =noMargin
     margin: 0
+
+=fixedTable
+    width: 75vw
+    position: relative
+    left: 20%
+
+=cellStyles($fontSize, $fontWeight)
+    padding: 20px 15px
+    text-align: left
+    color: #fff
+    font-size: $fontSize
+    font-weight: $fontWeight
+    +pointer
 
 =dropdownStyles
     +transparentBackground(0.3)
@@ -25,6 +39,7 @@
     padding: 10px
     +pointer
     +transition(.5s)
+    
 =optionStyles
     color: white
     font-family: $fontRegular

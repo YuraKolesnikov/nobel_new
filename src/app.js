@@ -4,6 +4,7 @@ import View from './view/View'
 import Controller from './controller/Controller'
 import SelectorModel from './model/SelectorModel'
 import SelectorView from './view/SelectorView'
+import './sass/main.sass'
 const table = new TableModel('./data/laureate.json')
 const view  = new TableView('laureates')
 

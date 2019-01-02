@@ -9,15 +9,61 @@
     <!-- <link rel="stylesheet" href="build/main.css"> -->
 </head>
 <body>
-    <main id="app">
-        <button id="name">Sort by name</button>
-        <button id="chemistry">Filter chemics</button>
-        <select name="" id="countrySelector"></select>
-        <div id="laureatesTable">
-            Test
+    <main id="app" class="main container grid">
+        <h1>The list of the greatest</h1>
+        <div id="modal_window" class="modal-window hidden">
+                <div class="modal-window__head flex">
+                    <h2 id="modal_name">George Swoosh</h2>
+                    <span class="modal-window__life">1993 - 2018</span>
+                    <hr class="modal-window__hr"/>
+                </div>
+                <div class="modal-window__body">
+                    <div id="biography">
+                        <div id="biography_born">Born in Riga</div>
+                        <div id="biography_died">Died in Bora-Bora</div>
+                    </div>
+                    <h3 class="modal-window__caption">Prizes:</h3>
+                    <ul id="prize_list" class="modal-window__info">
+                        <li class="modal-window__info-item space-sm">
+                            <h4>1901, physics</h4>
+                            <hr class="modal_window-hr">
+                            <p>Munich University, Munich, Germany</p>
+                            <p class="italic" style="padding-top: 10px;">"In recognition of the extraordinary services he has rendered by the discovery of the remarkable rays.</p>
+                        </li>
+                    </ul>
+                    <a class="modal-window__link" id="learn_more" target="_blank">Learn more</a>
+                </div>
+                <button class="modal-window__button-close" id="close">+</button>
+            
         </div>
-        
+        <div class="sidebar">
+            <h2>Choose filters</h2>
+            <div class="sidebar__filter-buttons" id="categoryButtons"></div>
+            <select class="sidebar__dropdown" id="countrySelect"></select>
+            <select class="sidebar__dropdown" id="yearSelect"></select>
+        </div>
+        <div class="table">
+            <div class="table-header">
+                <table class="table-header__layout table-fixed">
+                    <thead>
+                        <tr class="table-header__buttons">
+                            <td class="table-header__cell table-header__cell-sm" id="id" data-id="0">ID</td>
+                            <th class="table-header__cell" id="name" data-id="1">Name</th>
+                            <th class="table-header__cell" id="surname" data-id="2">Surname</th>
+                            <th class="table-header__cell" id="born" data-id="3">Born</th>
+                            <th class="table-header__cell" id="died" data-id="4">Died</th>
+                            <th class="table-header__cell table-header__cell-sm" id="age" data-id="5">Age</th>
+                            <th class="table-header__cell" id="country" data-id="6">Country</th>
+                            <th class="table-header__cell" id="prizes" data-id="7">Prizes</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table-body">
+                <table id="laureatesTable" class="table-body__main table-fixed"></table>
+            </div>
+        </div>
     </main>
-    <script src="js/app.js"></script>
+    <script src="public/build.js"></script>
 </body>
 </html>

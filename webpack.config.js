@@ -4,16 +4,19 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'app.js',
-        publicPath: '/js'
+        filename: 'build.js',
+        publicPath: '/public'
     },
     module: {
         rules: [
-          { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+          { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+          { test: /\.sass$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.resolve(__dirname, 'public'),
+        watchContentBase: true,
+        overlay: true
     },
 
     devtool: 'cheap-eval-source-map' // remove for build

@@ -1,0 +1,29 @@
+
+.sidebar
+    width: 15vw
+    position: fixed
+    left: 30px
+    justify-self: flex-start
+    display: flex
+    flex-direction: column
+    background-color: transparent
+    padding: 5px
+    font-family: $fontSemiBold
+    &__filter-buttons 
+        display: flex
+        flex-direction: column
+        +pointer
+    &__filter-button 
+        text-transform: uppercase
+        background-color: transparent
+        padding: 15px 10px
+        +transition(.5s)
+        &:hover 
+            +transparentBackground(0.3)
+    &__dropdown
+        +dropdownStyles
+        width: 108%
+        &:hover
+            +transparentBackground(0.6)
+        & option
+            +optionStyles

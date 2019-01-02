@@ -22,7 +22,7 @@ class Controller {
         console.log(`Sorting data by ${id}`);
     }
     filterData(id) {
-        this._oFilter.second = id;
+        this._oFilter.first = id;
         this._loadData();
     }
 }
