@@ -24,9 +24,7 @@ class Model extends EventEmitter {
     _validateValue(value) {
         return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;
     }
-    _getObjectById(sID) {
-        return this._oData.find(element => element.id == sID);
-    }
+    
     getData() {
         return this._oData;
     }

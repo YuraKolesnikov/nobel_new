@@ -1,10 +1,8 @@
 class Controller {
-    constructor(model, view, categoryFilter, countryFilter, yearFilter, sortingButtons, modalWindow) {
+    constructor(model, view, filterSet, sortingButtons, modalWindow) {
         this.model  = model
         this.view   = view
-        this.categoryFilter = categoryFilter
-        this.countryFilter  = countryFilter
-        this.yearFilter     = yearFilter
+        this.filterSet = filterSet
         this.sortingButtons = sortingButtons
         this.modalWindow    = modalWindow
         this._oFilter = {
@@ -12,12 +10,12 @@ class Controller {
             country: 'all',
             year: 'all'
         };
-        model.on('dataLoaded', this._loadData.bind(this));
-        view.on('sortData', this.sortData.bind(this));
+        model.on('dataLoaded', this._loadData.bind(this))
+        view.on('sortData', this.sortData.bind(this))
         view.on('renderModal', this.renderModal.bind(this))
-        this.categoryFilter.on('changeCategory', this.filterByCategory.bind(this))
-        this.countryFilter.on('changeCountry', this.filterByCountry.bind(this))
-        this.yearFilter.on('changeYear', this.filterByYear.bind(this))
+        this.filterSet.first.on('changeCategory', this.filterByCategory.bind(this))
+        this.filterSet.second.on('changeCountry', this.filterByCountry.bind(this))
+        this.filterSet.third.on('changeYear', this.filterByYear.bind(this))
         this.sortingButtons.on('sortTable', this.sortData.bind(this))
     }
     _loadData() {
@@ -41,10 +39,9 @@ class Controller {
         this._loadData()
     }
     renderModal(id) {
-        console.log(`Hello from Controller! This row id is ${id}`)
+        let oItem = this.model._getObjectById(id)
+        this.modalWindow.renderModal(oItem)
     }
 }
-
-
 
 export default Controller;

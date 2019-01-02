@@ -6,8 +6,7 @@ class ModalView extends View {
     }
 
     _adaptHeight(id) {
-        this.oModalWindow.style.height = 250 + 70*id + 'px'
-        console.log(this.oModalWindow.style.height)
+        this.oModalWindow.style.height = 220 + 70*id + 'px'
         return this.oModalWindow
     }
 
@@ -18,6 +17,7 @@ class ModalView extends View {
     }
 
     renderModal(oItem) {
+        this.oModalWindow.textContent = ''
         this.oModalWindow.classList.add('visible')
         this.oModalWindow.classList.remove('hidden')
 
@@ -35,7 +35,7 @@ class ModalView extends View {
         oTitle = this._createElement('h3', { className: 'modal-window__caption' }, `${oItem.infoTitle}:`)
         oInfo = this._createElement('ul', { className: 'modal-window__info' })
         oItem.info.forEach(item => {
-            let yearAndSubject = this._createElement('h4', {}, `${item.year}, ${item.subject}`)
+            let yearAndSubject = this._createElement('h4', { className: 'modal-window__year-and-subject' }, `${item.year}, ${item.subject}`)
             let additionalInfo = this._createElement('p', {}, `${item.additionalInfo.name}, ${item.additionalInfo.city}, ${item.additionalInfo.country}`)
             oCaption = this._createElement('p', { className: 'italic' }, item.caption)
             let listItem = this._createElement('li', { className: 'modal-window__info-item flex' }, yearAndSubject, additionalInfo, oCaption)

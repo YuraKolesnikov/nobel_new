@@ -4,6 +4,10 @@ class TableModel extends Model {
         super(_sResourceUrl)
         this._aFilteredData = [];
     }
+
+    _getObjectById(sID) {
+        return this._aFilteredData.find(element => element.id == sID);
+    }
     _validateValue(sValue) {
         return sValue === undefined ? sValue = 'Unknown' : sValue === '0000-00-00' ? sValue = '-' : sValue;
     }
@@ -31,20 +35,17 @@ class TableModel extends Model {
                 description1: 'Born in ' + this._validateValue(oItem.bornCity) + ', ' + this._validateValue(oItem.bornCountry),
                 description2: 'Died in ' + this._validateValue(oItem.diedCity) + ', ' + this._validateValue(oItem.diedCountry),
                 infoTitle: 'Prizes: ',
-                info: oItem.prizes.map(function (infoPiece) {
-                    return {
-                        year: infoPiece.year,
+                info: oItem.prizes.map(infoPiece => ({
+                    year: infoPiece.year,
                         subject: infoPiece.category,
                         caption: infoPiece.motivation,
                         additionalInfo: infoPiece.affiliations
-                        .reduce((result, filter) => {
-                            result.name     = filter.name;
-                            result.city     = filter.city;
-                            result.country  = filter.country
-                            return result;
-                        }, {})
-                    };
-                })
+                            .map(location => ({
+                                name: location.name,
+                                city: location.city,
+                                country: location.country
+                    }))
+                }))
         }), this)
         return aMutatedData;
     }
@@ -65,7 +66,7 @@ class TableModel extends Model {
                 sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
                 return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true;
             });
-        console.log(this._aFilteredData[0])
+        console.log(this._getObjectById(217))
         return this._aFilteredData;
     }
     sortData(key) {
