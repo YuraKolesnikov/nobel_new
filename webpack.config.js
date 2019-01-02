@@ -1,5 +1,6 @@
 const   path = require('path'),
-        autoprefixer = require('autoprefixer')
+        autoprefixer = require('autoprefixer'),
+        ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: './src/app',
 
@@ -11,14 +12,18 @@ module.exports = {
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-            { test: /\.sass$/, use: [ 
-                { loader: 'style-loader' }, 
-                { loader: 'css-loader' }, 
-                { loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
-                { loader: 'sass-loader' }] 
+            { 
+                test: /\.sass$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
             }
         ]
     },
+    plugins: [
+        new ExtractTextPlugin('./build.css')
+    ],
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         watchContentBase: true,
