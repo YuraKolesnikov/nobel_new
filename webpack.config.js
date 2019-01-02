@@ -22,7 +22,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('./build.css')
+        new ExtractTextPlugin('build.css')
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
