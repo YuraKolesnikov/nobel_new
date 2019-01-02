@@ -36,22 +36,22 @@ class TableModel extends Model {
                         year: infoPiece.year,
                         subject: infoPiece.category,
                         caption: infoPiece.motivation,
-                        additionalInfo: infoPiece.affiliations.map(function (location) {
-                            return {
-                                name: location.name,
-                                city: location.city,
-                                country: location.country
-                            };
-                        })
+                        additionalInfo: infoPiece.affiliations
+                        .reduce((result, filter) => {
+                            result.name     = filter.name;
+                            result.city     = filter.city;
+                            result.country  = filter.country
+                            return result;
+                        }, {})
                     };
                 })
         }), this)
         return aMutatedData;
     }
     filterData(oFilter) {
-        let sCategory = oFilter.first;
-        let sCountryCode = oFilter.second;
-        let sYear = oFilter.third;
+        let sCategory = oFilter.category;
+        let sCountryCode = oFilter.country;
+        let sYear = oFilter.year;
         this._aFilteredData = this._prepareData()
             .filter(oObject => {
                 sCategory === 'all' ? sCategory = '' : sCategory;
@@ -65,7 +65,7 @@ class TableModel extends Model {
                 sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
                 return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true;
             });
-        console.log(oFilter);
+        console.log(this._aFilteredData[0])
         return this._aFilteredData;
     }
     sortData(key) {

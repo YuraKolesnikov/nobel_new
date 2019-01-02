@@ -35,8 +35,16 @@ modalWindow.renderModal({
     description2: 'Also the best web developer',
     infoTitle: 'Prizes',
     info: [
-        { name: 'Item one' },
-        { name: 'Item two' }
+        {
+            year: '1901',
+            subject: 'physics',
+            caption: '"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him"',
+            additionalInfo: {
+                name: 'Munich Univercity',
+                city: 'Munich',
+                country: 'Germany'
+            }
+        }
     ]
 })
 setTimeout(() => {
