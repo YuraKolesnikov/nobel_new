@@ -30,7 +30,7 @@ class ButtonView extends View {
 
     handleClick({ target }) {
         console.log(`${this.oEvent} by ${target.dataset.id}`)
-        //this.emit(this.oEvent, target.dataset.id)
+        this.emit(this.oEvent, target.dataset.id)
     }
 }
 

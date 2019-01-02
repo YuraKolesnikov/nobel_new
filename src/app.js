@@ -17,12 +17,12 @@ const countrySelectorModel = new SelectorModel('./data/country.json')
 /* View */
 const view  = new TableView('laureates')
 
-const sidebarButtons        = new ButtonView(buttons.sidebarData, 'filter', 'categoryButtons', 'sidebar-buttons')
+const sidebarButtons        = new ButtonView(buttons.sidebarData, 'changeCategory', 'categoryButtons', 'sidebar-buttons')
 const headerButtons         = new ButtonView(buttons.tableHeaderData, 'sortTable', 'tableHeaderButtons', 'table-header')
 
 const tableView             = new TableView('laureates')
-const yearSelector          = new SelectorView('yearSelector')
-const countrySelectorView   = new SelectorView('countrySelector');
+const yearSelectorView      = new SelectorView('changeYear', 'yearSelector')
+const countrySelectorView   = new SelectorView('changeCountry', 'countrySelector');
 setTimeout(() => {
     countrySelectorView.renderDropdown(countrySelectorModel.getData())
 }, 1500)
@@ -36,6 +36,7 @@ for (let i = 1900; i < sThisYear; i++) {
     });
 }
 
-yearSelector.renderDropdown(aYearData)
+yearSelectorView.renderDropdown(aYearData)
+
 /* Controller */
-const controller = new Controller(table, view, countrySelectorView)
+const controller = new Controller(table, view, sidebarButtons, countrySelectorView, yearSelectorView, headerButtons)

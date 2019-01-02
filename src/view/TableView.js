@@ -33,8 +33,10 @@ class TableView extends View {
         return this.oTable;
     }
 
-    handleRowClick() {
-        console.log('KEK')
+    handleRowClick({ target }) {
+        const sRowId = target.parentNode.id
+        console.log(`${sRowId}`)
+        //this.emit('renderModal', target.id)
     }
 
 }
