@@ -10,12 +10,13 @@ module.exports = {
     },
     module: {
         rules: [
-          { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-          { test: /\.sass$/, use: [ 
-              { loader: 'style-loader' }, 
-              { loader: 'css-loader' }, 
-              //{ loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
-              { loader: 'sass-loader' }] }
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+            { test: /\.sass$/, use: [ 
+                { loader: 'style-loader' }, 
+                { loader: 'css-loader' }, 
+                { loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
+                { loader: 'sass-loader' }] 
+            }
         ]
     },
     devServer: {

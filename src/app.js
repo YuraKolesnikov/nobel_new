@@ -1,5 +1,5 @@
 /* Importing modules */
-
+import './sass/main.sass'
 import TableModel from './model/TableModel'
 import SelectorModel from './model/SelectorModel'
 import TableView from './view/TableView'
@@ -39,4 +39,3 @@ for (let i = 1900; i < sThisYear; i++) {
 yearSelector.renderDropdown(aYearData)
 /* Controller */
 const controller = new Controller(table, view, countrySelectorView)
-import './sass/main.sass'

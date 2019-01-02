@@ -12,17 +12,16 @@
     "url": "git+https://github.com/YuraKolesnikov/nobel_new.git"
   },
   "devDependencies": {
-    "@babel/core": "~7.2.2",
-    "@babel/preset-env": "~7.2.3",
-    "autoprefixer": "~9.4.3",
-    "babel-loader": "~8.0.4",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "autoprefixer": "^9.4.3",
+    "babel-loader": "^8.0.4",
     "css-loader": "*",
     "node-sass": "~4.11.0",
-    "postcss-loader": "~3.0.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "~7.1.0",
     "style-loader": "*",
-    "webpack": "~3.*",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },
   "keywords": [],
