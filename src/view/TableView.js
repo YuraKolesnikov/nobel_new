@@ -35,8 +35,7 @@ class TableView extends View {
 
     handleRowClick({ target }) {
         const sRowId = target.parentNode.id
-        console.log(`${sRowId}`)
-        //this.emit('renderModal', target.id)
+        this.emit('renderModal', sRowId)
     }
 
 }
