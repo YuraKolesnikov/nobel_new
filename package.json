@@ -14,9 +14,11 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "autoprefixer": "^9.4.3",
     "babel-loader": "^8.0.4",
     "css-loader": "*",
     "node-sass": "~4.11.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "~7.1.0",
     "style-loader": "*",
     "webpack": "^2.6.1",

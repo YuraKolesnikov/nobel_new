@@ -1,4 +1,4 @@
-whtml, body, div, span, applet, object, iframe,
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -46,22 +46,27 @@ body
     color: white
     font-family: $fontRegular
 
+main
+    display: block
+    
 .italic 
     font-style: oblique
 
 /* Layout styling */
 .flex 
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkite-flex
     display: flex
     flex-flow: row nowrap
 
-.main 
-    padding-top: 100px
+.main-container 
+    padding-top: 50px
 
-.main h1 
-    position: absolute
-    top: 50px
-    left: 50%
-    transform: translate(-50%)
+
+.main-container h1 
+    text-align: center
+    padding-bottom: 30px
 
 /* Spacing */
 .space-sm

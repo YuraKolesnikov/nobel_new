@@ -1,4 +1,5 @@
-const path = require('path');
+const   path = require('path'),
+        autoprefixer = require('autoprefixer')
 module.exports = {
     entry: './src/app',
 
@@ -10,10 +11,15 @@ module.exports = {
     module: {
         rules: [
           { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-          { test: /\.sass$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
+          { test: /\.sass$/, use: [ 
+              { loader: 'style-loader' }, 
+              { loader: 'css-loader' }, 
+              { loader: 'postcss-loader', options: { plugins: [ autoprefixer({ browsers:['ie >= 8', 'last 4 version'] }) ],sourceMap: true }}, 
+              { loader: 'sass-loader' }] }
         ]
     },
     devServer: {
+        host: '0.0.0.0',
         contentBase: path.resolve(__dirname, 'public'),
         watchContentBase: true,
         overlay: true
