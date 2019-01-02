@@ -5,12 +5,12 @@ class View extends EventEmitter {
         /* TODO: Здесь будут массивы с кнопками и селекты с опциями */
         this.sortButton = document.getElementById('name');
         this.filterButton = document.getElementById('chemistry');
-        this._addEventListeners();
+        //this._addEventListeners();
     }
-    _addEventListeners() {
-        this.sortButton.addEventListener('click', this.handleSort.bind(this));
-        this.filterButton.addEventListener('click', this.handleFilter.bind(this));
-    }
+    //_addEventListeners() {
+    //    this.sortButton.addEventListener('click', this.handleSort.bind(this));
+    //    this.filterButton.addEventListener('click', this.handleFilter.bind(this));
+    //}
     handleSort() {
         this.emit('sortData', this.sortButton.id);
     }

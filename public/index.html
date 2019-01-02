@@ -39,23 +39,14 @@
         <div class="sidebar">
             <h2>Choose filters</h2>
             <div class="sidebar__filter-buttons" id="categoryButtons"></div>
-            <select class="sidebar__dropdown" id="countrySelect"></select>
-            <select class="sidebar__dropdown" id="yearSelect"></select>
+            <select class="sidebar__dropdown" id="countrySelector"></select>
+            <select class="sidebar__dropdown" id="yearSelector"></select>
         </div>
         <div class="table">
             <div class="table-header">
                 <table class="table-header__layout table-fixed">
                     <thead>
-                        <tr class="table-header__buttons">
-                            <td class="table-header__cell table-header__cell-sm" id="id" data-id="0">ID</td>
-                            <th class="table-header__cell" id="name" data-id="1">Name</th>
-                            <th class="table-header__cell" id="surname" data-id="2">Surname</th>
-                            <th class="table-header__cell" id="born" data-id="3">Born</th>
-                            <th class="table-header__cell" id="died" data-id="4">Died</th>
-                            <th class="table-header__cell table-header__cell-sm" id="age" data-id="5">Age</th>
-                            <th class="table-header__cell" id="country" data-id="6">Country</th>
-                            <th class="table-header__cell" id="prizes" data-id="7">Prizes</th>
-                        </tr>
+                        <tr class="table-header__buttons" id="tableHeaderButtons"></tr>
                     </thead>
                 </table>
             </div>
