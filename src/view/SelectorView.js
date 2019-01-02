@@ -18,7 +18,8 @@ class SelectorView extends View {
 
     handleChange() {
         let sID = this.oDropdown[this.oDropdown.selectedIndex].dataset.id
-        this.emit('changeCountry', sID)
+        console.log(`Filter by ${sID}`)
+        //this.emit('changeCountry', sID)
     }
 }
 
