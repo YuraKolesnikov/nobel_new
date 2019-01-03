@@ -37,13 +37,13 @@ class TableModel extends Model {
                 infoTitle: 'Prizes: ',
                 info: oItem.prizes.map(infoPiece => ({
                     year: infoPiece.year,
-                        subject: infoPiece.category,
-                        caption: infoPiece.motivation,
-                        additionalInfo: infoPiece.affiliations
-                            .map(location => ({
-                                name: location.name,
-                                city: location.city,
-                                country: location.country
+                    subject: infoPiece.category,
+                    caption: this._validateValue(infoPiece.motivation),
+                    additionalInfo: infoPiece.affiliations
+                        .map(location => ({
+                            name: this._validateValue(location.name),
+                            city: this._validateValue(location.city),
+                            country: this._validateValue(location.country)
                     }))
                 }))
         }), this)
@@ -66,7 +66,8 @@ class TableModel extends Model {
                 sCountryCode === 'all' ? sCountryCode = '' : sCountryCode;
                 return sCountryCode && oObject.filterAnchor != sCountryCode ? false : true;
             });
-        console.log(this._getObjectById(217))
+        console.dir(this._getObjectById(6))
+        console.dir(this._getObjectById(217))
         return this._aFilteredData;
     }
     sortData(key) {

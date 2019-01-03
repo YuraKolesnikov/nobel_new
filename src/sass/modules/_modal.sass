@@ -11,6 +11,8 @@
     text-align: left    
     +noMargin
     +transition(.5s)
+    & *
+        +transition(.5s)
     &.visible 
         opacity: 1
         z-index: 1000
@@ -55,7 +57,7 @@
         text-decoration: none
         color: $darkGray
         padding-bottom: 0px
-        padding-top: 15px
+        padding-top: 25px
         display: inline-block
         border-bottom: 2px solid transparent
         cursor: pointer

@@ -11,6 +11,7 @@ class Controller {
             year: 'all'
         };
         model.on('dataLoaded', this._loadData.bind(this))
+        model.on('dataLoaded', this._loadControls.bind(this))
         view.on('sortData', this.sortData.bind(this))
         view.on('renderModal', this.renderModal.bind(this))
         this.filterSet.first.on('changeCategory', this.filterByCategory.bind(this))
@@ -21,6 +22,9 @@ class Controller {
     _loadData() {
         const aData = this.model.filterData(this._oFilter);
         this.view.renderTable(aData);
+    }
+    _loadControls() {
+        
     }
     sortData(id) {
         this.view.renderTable(this.model.sortData(id));

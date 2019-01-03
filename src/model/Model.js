@@ -6,21 +6,16 @@ class Model extends EventEmitter {
         this._oData = [];
         this._loadData(_sResourceUrl)
     }
+    
     _loadData(_sResourceUrl) {
-        /* TODO: поменять на fetch */
-        const request = new XMLHttpRequest();
-        request.open('GET', this._sResourceUrl, true);
-        request.onload = function () {
-            if (request.status === 200) {
-                const type = request.getResponseHeader('Content-Type');
-                if (type.indexOf('text') !== 1) {
-                    this._oData = JSON.parse(request.responseText);
-                }
-                this.emit('dataLoaded')
-            }
-        }.bind(this);
-        request.send();
+        fetch(this._sResourceUrl)
+        .then(res => res.json())
+        .then(data => {
+            this._oData = data
+            this.emit('dataLoaded')
+        })
     }
+
     _validateValue(value) {
         return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;
     }

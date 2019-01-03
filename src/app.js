@@ -1,5 +1,6 @@
 /* Importing modules */
 import './sass/main.sass'
+import '@babel/polyfill'
 import TableModel from './model/TableModel'
 import SelectorModel from './model/SelectorModel'
 import TableView from './view/TableView'
@@ -10,27 +11,25 @@ import Controller from './controller/Controller'
 
 /* Bricks */
 import buttons from './buttons'
-import Model from './model/Model';
 
 /* Declaring instances */
 /* Model */
-const tableModel = new TableModel('./data/laureate.json')
-const countrySelectorModel = new SelectorModel('./data/country.json')
+const oTableModel = new TableModel('./data/laureate.json')
+const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
 /* View */
 const view  = new TableView('laureates')
 /* Rendering buttons */
-const sidebarButtons = new ButtonView(buttons.sidebarData, 'changeCategory', 'categoryButtons', 'sidebar-buttons')
-const headerButtons  = new ButtonView(buttons.tableHeaderData, 'sortTable', 'tableHeaderButtons', 'table-header')
+const oSidebarButtons = new ButtonView(buttons.sidebarData, 'changeCategory', 'categoryButtons', 'sidebar-buttons')
+const oHeaderButtons  = new ButtonView(buttons.tableHeaderData, 'sortTable', 'tableHeaderButtons', 'table-header')
 
-const tableView             = new TableView('laureates')
-
-const modalWindow           = new ModalView('modal_window')
+const oTableView    = new TableView('laureates')
+const oModalWindow  = new ModalView('modal_window')
 
 /* Rendering dropdowns */
-const yearSelectorView      = new SelectorView('changeYear', 'yearSelector')
-const countrySelectorView   = new SelectorView('changeCountry', 'countrySelector');
-tableModel.on('dataLoaded', () => countrySelectorView.renderDropdown(countrySelectorModel.getData()))
+const oYearSelectorView      = new SelectorView('changeYear', 'yearSelector')
+const oCountrySelectorView   = new SelectorView('changeCountry', 'countrySelector');
+setTimeout(() => oCountrySelectorView.renderDropdown(oCountrySelectorModel.getData()), 1000)
 
 let sThisYear = (new Date()).getFullYear() + 1
 let aYearData = []
@@ -40,12 +39,13 @@ for (let i = 1900; i < sThisYear; i++) {
         'code': i
     });
 }
-yearSelectorView.renderDropdown(aYearData)
+oYearSelectorView.renderDropdown(aYearData)
 
 /* Controller */
-const filterSet = {
-    first: sidebarButtons,
-    second: countrySelectorView,
-    third: yearSelectorView
+const oFilterSet = {
+    first: oSidebarButtons,
+    second: oCountrySelectorView,
+    third: oYearSelectorView
 }
-const controller = new Controller(tableModel, tableView, filterSet, headerButtons, modalWindow)
+
+const oController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow)

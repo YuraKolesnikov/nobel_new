@@ -1,5 +1,4 @@
 const   path = require('path'),
-        autoprefixer = require('autoprefixer'),
         ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: './src/app',
@@ -10,8 +9,8 @@ module.exports = {
         publicPath: '/public'
     },
     module: {
-        rules: [
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+        loaders: [
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['@babel/preset-env'] } },
             { 
                 test: /\.sass$/,
                 use: ExtractTextPlugin.extract({

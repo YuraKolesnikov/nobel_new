@@ -8,7 +8,7 @@ class TableView extends View {
     _reduceObjectToArray(aArray) {
         let newArray = [];
         aArray.forEach(obj => {
-            newArray.push(obj.subject, obj.year)
+            newArray.push(` ${obj.subject} ${obj.year}`)
         })
         return newArray;
     }
