@@ -25,7 +25,7 @@ class ModalView extends View {
 
         /* Rendering modalWindow head */
         oName = this._createElement('h2', { className: 'modal-window__name' }, `${oItem.name} ${oItem.surname}`)
-        oSpan = this._createElement('span', { className: 'modal-window__span' }, `oItem.born !== '-' ? ${oItem.born} - ${oItem.died} : ''`)
+        oSpan = this._createElement('span', { className: 'modal-window__span' }, oItem.born !== '-' ? `${oItem.born} - ${oItem.died}` : 'Unknown')
         oModalHead = this._createElement('div', { className: 'modal-window__head flex' }, oName, oSpan)
 
         /* Rendering modalWindow body */
@@ -56,7 +56,7 @@ class ModalView extends View {
         this._adaptHeight(oItem.info.length)
 
         /* Button and link creating */
-        oLearnMore = this._createElement('a', { className: 'modal-window__link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.name}+${oItem.surname}` }, 'Learn more')
+        oLearnMore = this._createElement('a', { className: 'modal-window__link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.name}+${oItem.surname}`, target: '_blank' }, 'Learn more')
         oButtonClose = this._createElement('button', { className: 'modal-window__button-close' }, '+')
         oButtonClose.addEventListener('click', this._closeWindow.bind(this))
 
