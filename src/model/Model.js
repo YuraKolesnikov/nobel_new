@@ -1,4 +1,5 @@
 import EventEmitter from '../helpers'
+import fetch from 'isomorphic-fetch'
 class Model extends EventEmitter {
     constructor(_sResourceUrl) {
         super();
@@ -6,7 +7,7 @@ class Model extends EventEmitter {
         this._oData = [];
         this._loadData(_sResourceUrl)
     }
-    
+
     _loadData(_sResourceUrl) {
         fetch(this._sResourceUrl)
         .then(res => res.json())
