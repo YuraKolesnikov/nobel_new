@@ -4,24 +4,23 @@ class ButtonView extends View {
         super()
         this.aData          = aData
         this.oEvent         = oEvent
-        this.sButtonSet     = document.getElementById(`${sButtonSetID}`)
         this.sFunctionality = sFunctionality
+        this.sButtonSet     = document.getElementById(`${sButtonSetID}`)
         this.renderButtonSet()
     }
 
     renderButtonSet() {
         this._clearContainer(this.sButtonSet)
-        let classForButton, tagForButton
+        let sClassForButton, sTagForButton
         if (this.sFunctionality === 'table-header') {
-            classForButton  = 'table-header__cell'
-            tagForButton    = 'th'
+            sClassForButton  = 'table-header__cell'
+            sTagForButton    = 'th'
         } else if (this.sFunctionality === 'sidebar-buttons') {
-            classForButton  = 'button sidebar__filter-button'
-            tagForButton    = 'a'
+            sClassForButton  = 'button sidebar__filter-button'
+            sTagForButton    = 'a'
         }
         this.aData.forEach(item => {
-            //classForButton = item.small === true ? 'table-header__cell-sm' : classForButton
-            let oButton = this._createElement(tagForButton, { className: classForButton + `${item.small ? ' table-header__cell-sm' : ''}`, 'data-id': item.id }, `${item.title}`)
+            const oButton = this._createElement(sTagForButton, { className: sClassForButton + `${item.small ? ' table-header__cell-sm' : ''}`, 'data-id': item.id }, `${item.title}`)
             oButton.addEventListener('click', this.handleClick.bind(this))
             this.sButtonSet.appendChild(oButton)
         }, this)
@@ -29,7 +28,6 @@ class ButtonView extends View {
     }
 
     handleClick({ target }) {
-        console.log(`${this.oEvent} by ${target.dataset.id}`)
         this.emit(this.oEvent, target.dataset.id)
     }
 }

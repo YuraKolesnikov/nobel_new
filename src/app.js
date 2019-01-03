@@ -1,16 +1,23 @@
-/* Importing modules */
+/* Importing polyfills for IE11 and styles */
 import './sass/main.sass'
 import '@babel/polyfill'
-import TableModel from './model/TableModel'
-import SelectorModel from './model/SelectorModel'
-import TableView from './view/TableView'
-import ButtonView from './view/ButtonView'
-import SelectorView from './view/SelectorView'
-import ModalView from './view/ModalView'
-import Controller from './controller/Controller'
 
 /* Bricks */
 import buttons from './buttons'
+
+
+/* Importing modules */
+import TableModel       from './model/TableModel'
+import SelectorModel    from './model/SelectorModel'
+
+import TableView        from './view/TableView'
+import ButtonView       from './view/ButtonView'
+import SelectorView     from './view/SelectorView'
+import ModalView        from './view/ModalView'
+
+import Controller       from './controller/Controller'
+
+
 
 /* Declaring instances */
 /* Model */

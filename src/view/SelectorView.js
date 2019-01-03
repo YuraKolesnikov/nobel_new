@@ -19,9 +19,8 @@ class SelectorView extends View {
 
     handleChange() {
         let sID = this.oDropdown[this.oDropdown.selectedIndex].dataset.id
-        console.log(`Filter by ${sID}`)
         this.emit(this.oEvent, sID)
     }
 }
 
-export default SelectorView;
+export default SelectorView

@@ -17,7 +17,7 @@ class ModalView extends View {
     }
 
     renderModal(oItem) {
-        this.oModalWindow.textContent = ''
+        this._clearContainer.call(this.oModalWindow)
         this.oModalWindow.classList.add('visible')
         this.oModalWindow.classList.remove('hidden')
 
@@ -29,13 +29,15 @@ class ModalView extends View {
         oModalHead = this._createElement('div', { className: 'modal-window__head flex' }, oName, oSpan)
 
         /* Rendering modalWindow body */
-        let desc1 = this._createElement('p', { className: 'modal-window__description' }, oItem.description1)
-        let desc2 = this._createElement('p', { className: 'modal-window__description' }, oItem.description2)
-        oDescription = this._createElement('div', { className: 'modal-window__description' }, desc1, desc2)
+        let oDesc1 = this._createElement('p', { className: 'modal-window__description' }, oItem.description1)
+        let oDesc2 = this._createElement('p', { className: 'modal-window__description' }, oItem.description2)
+        oDescription = this._createElement('div', { className: 'modal-window__description' }, oDesc1, oDesc2)
         oTitle = this._createElement('h3', { className: 'modal-window__caption' }, `${oItem.infoTitle}:`)
         oInfoList = this._createElement('ul', { className: 'modal-window__info' })
+        /* Rendering info section for modalWindow body */
         oItem.info.forEach(item => {
             let yearAndSubject = this._createElement('h4', { className: 'modal-window__year-and-subject' }, `${item.year}, ${item.subject}`)
+
             /* Logical expression for better display. If one of the elements is unknown, render 'Place unknown' string */
             if (item.additionalInfo[0].city === 'Unknown' || item.additionalInfo[0].country === 'Unknown') {
                 oAdditionalInfo = this._createElement('p', {}, `Place unknown`)
@@ -45,10 +47,12 @@ class ModalView extends View {
                     ${item.additionalInfo[0].city}, 
                     ${item.additionalInfo[0].country}`)
             }
+
             let oCaption = this._createElement('p', { className: 'italic' }, item.caption)
             let listItem = this._createElement('li', { className: 'modal-window__info-item flex' }, yearAndSubject, oAdditionalInfo, oCaption)
             oInfoList.appendChild(listItem)
         }, this)
+        /* Adapting height depending on list item count */
         this._adaptHeight(oItem.info.length)
 
         /* Button and link creating */
@@ -57,7 +61,7 @@ class ModalView extends View {
         oButtonClose.addEventListener('click', this._closeWindow.bind(this))
 
         oModalBody = this._createElement('div', { className: 'modal-window__body'}, oDescription, oTitle, oInfoList, oLearnMore, oButtonClose)
-
+        /* Building modalWindow */
         this.oModalWindow.appendChild(oModalHead)
         this.oModalWindow.appendChild(oModalBody)
         return this.oModalWindow

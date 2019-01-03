@@ -5,6 +5,7 @@ class TableView extends View {
         this.oTable = document.getElementById(`${sTableName}Table`)
         
     }
+    
     _reduceObjectToArray(aArray) {
         let newArray = [];
         aArray.forEach(obj => {
@@ -12,32 +13,31 @@ class TableView extends View {
         })
         return newArray;
     }
+    
     renderTable(aData) {
         this._clearContainer.call(this.oTable)
         let oTableBody = this._createElement('tbody', {})
         aData.forEach(oItem => {
-            /* TODO: Здесь будут ячейки с данными */
-            let id       = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.id)
-            let name     = this._createElement('td', { className: 'table-body__cell' }, oItem.name)
-            let surname  = this._createElement('td', { className: 'table-body__cell' }, oItem.surname)
-            let born     = this._createElement('td', { className: 'table-body__cell' }, oItem.born)
-            let died     = this._createElement('td', { className: 'table-body__cell' }, oItem.died)
-            let age      = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.age.toString())
-            let country  = this._createElement('td', { className: 'table-body__cell' }, oItem.country)
-            let info     = this._createElement('td', { className: 'table-body__cell' }, this._reduceObjectToArray(oItem.info).toString())
-            let oBodyRow = this._createElement('tr', { id: oItem.id }, id, name, surname, born, died, age, country, info)
+            let oId      = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.id)
+            let oName    = this._createElement('td', { className: 'table-body__cell' }, oItem.name)
+            let oSurname = this._createElement('td', { className: 'table-body__cell' }, oItem.surname)
+            let oBorn    = this._createElement('td', { className: 'table-body__cell' }, oItem.born)
+            let oDied    = this._createElement('td', { className: 'table-body__cell' }, oItem.died)
+            let oAge     = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.age.toString())
+            let oCountry = this._createElement('td', { className: 'table-body__cell' }, oItem.country)
+            let oInfo    = this._createElement('td', { className: 'table-body__cell' }, this._reduceObjectToArray(oItem.info).toString())
+            let oBodyRow = this._createElement('tr', { id: oItem.id }, oId, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
             oBodyRow.addEventListener('click', this.handleRowClick.bind(this))
             oTableBody.appendChild(oBodyRow)
-        }, this);
+        }, this)
         this.oTable.appendChild(oTableBody)
-        return this.oTable;
+        return this.oTable
     }
 
     handleRowClick({ target }) {
         const sRowId = target.parentNode.id
         this.emit('renderModal', sRowId)
     }
-
 }
 
-export default TableView;
+export default TableView

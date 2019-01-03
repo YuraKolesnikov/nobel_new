@@ -2,7 +2,7 @@ import Model from './Model'
 class SelectorModel extends Model {
     constructor(_sResourceUrl) {
         super(_sResourceUrl)
-        this._sResourceUrl = _sResourceUrl;
+        this._sResourceUrl = _sResourceUrl
     }
     _generateId() {
         this._oData = this._oData
@@ -15,8 +15,8 @@ class SelectorModel extends Model {
         return this._oData;
     }
     getData() {
-        return this._generateId();
+        return this._generateId()
     }
 }
 
-export default SelectorModel;
+export default SelectorModel

@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 class Model extends EventEmitter {
     constructor(_sResourceUrl) {
         super();
-        this._sResourceUrl = _sResourceUrl;
+        this._sResourceUrl = _sResourceUrl
         this._oData = [];
         this._loadData(_sResourceUrl)
     }
@@ -18,12 +18,12 @@ class Model extends EventEmitter {
     }
 
     _validateValue(value) {
-        return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value;
+        return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value
     }
     
     getData() {
-        return this._oData;
+        return this._oData
     }
 }
 
-export default Model;
+export default Model

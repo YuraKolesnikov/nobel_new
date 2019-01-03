@@ -1,35 +1,39 @@
-import EventEmitter from '../helpers';
+import EventEmitter from '../helpers'
 class View extends EventEmitter {
     constructor() {
         super()
     }
+
     handleSort() {
-        this.emit('sortData', this.sortButton.id);
+        this.emit('sortData', this.sortButton.id)
     }
+
     handleFilter() {
-        this.emit('filterData', this.filterButton.id);
+        this.emit('filterData', this.filterButton.id)
     }
-    _createElement(tag, props, ...children) {
-        const element = document.createElement(tag);
-        Object.keys(props).forEach(key => {
+
+    _createElement(sTag, oProps, ...aChildren) {
+        const oElement = document.createElement(sTag)
+        Object.keys(oProps).forEach(key => {
             key.startsWith('data-')
-            ? element.setAttribute(key, props[key])
-            : element[key] = props[key];
+            ? oElement.setAttribute(key, oProps[key])
+            : oElement[key] = oProps[key];
         });
     
-        children.forEach(child => {
+        aChildren.forEach(child => {
             typeof child === 'string'
             ? child = document.createTextNode(child)
             : 0
     
-            element.appendChild(child);
+            oElement.appendChild(child)
         });
-        return element;
+        return oElement
     }
+
     _clearContainer() {
         while(this.firstChild) { this.removeChild(this.firstChild) }
-        return this;
+        return this
     }
 }
 
-export default View;
+export default View
