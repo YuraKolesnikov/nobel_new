@@ -7,6 +7,7 @@ import buttons from './buttons'
 
 
 /* Importing modules */
+import URLParser        from './router/URLParser'
 import TableModel       from './model/TableModel'
 import SelectorModel    from './model/SelectorModel'
 
@@ -48,6 +49,14 @@ for (let i = 1900; i < sThisYear; i++) {
 }
 oYearSelectorView.renderDropdown(aYearData)
 
+/* URL Parser */
+const oURLParser = new URLParser()
+oURLParser.getUrl({
+    category: 'all',
+    country: 'all',
+    year: 'all'
+})
+
 /* Controller */
 const oFilterSet = {
     first: oSidebarButtons,
@@ -55,4 +64,5 @@ const oFilterSet = {
     third: oYearSelectorView
 }
 
-const oController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow)
+const oController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
+

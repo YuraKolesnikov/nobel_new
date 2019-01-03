@@ -1,11 +1,11 @@
 class Controller {
-    constructor(oModel, oView, oFilterSet, oSortingButtons, oModalWindow) {
+    constructor(oModel, oView, oFilterSet, oSortingButtons, oModalWindow, oURLParser) {
         this.oModel  = oModel
         this.oView   = oView
         this.oFilterSet = oFilterSet
         this.oSortingButtons = oSortingButtons
         this.oModalWindow    = oModalWindow
-
+        this.oURLParser = oURLParser
         this._oFilter = {
             category: 'all',
             country: 'all',
@@ -24,6 +24,7 @@ class Controller {
     _loadData() {
         const aData = this.oModel.filterData(this._oFilter)
         this.oView.renderTable(aData);
+        this.oURLParser.getUrl(this._oFilter)
     }
 
     sortData(id) {
