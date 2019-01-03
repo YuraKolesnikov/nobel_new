@@ -66,3 +66,4 @@ const oFilterSet = {
 
 const oController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
 
+console.log('Test')
