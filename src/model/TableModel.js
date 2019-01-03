@@ -1,4 +1,5 @@
 import Model from './Model'
+import { type } from 'os';
 class TableModel extends Model {
     constructor(_sResourceUrl) {
         super(_sResourceUrl)
@@ -24,7 +25,7 @@ class TableModel extends Model {
     }
     _prepareData() {
         const aMutatedData = this._oData.map(item => ({
-                id: this._validateValue(item.id) || '',
+                id: parseInt(this._validateValue(item.id), 10) || '',
                 name: this._validateValue(item.firstname) || this._validateValue(item.name),
                 surname: this._validateValue(item.surname) || this._validateValue(item.lastname),
                 born: this._validateValue(item.born),
@@ -73,9 +74,19 @@ class TableModel extends Model {
         let oData = this._aFilteredData
         sKey = sKey === undefined ? 'id' : sKey
         this.ascending = !this.ascending
-        this.ascending === true
-        ? oData.sort((a, b) => a[sKey] > b[sKey] ? 1 : -1)
-        : oData.sort((a, b) => a[sKey] < b[sKey] ? 1 : -1)
+        this.ascending == true
+        ? oData.sort((a, b) => {
+            console.log(parseInt(a[sKey], 10))
+            return typeof a[sKey] == 'string'
+            ? a[sKey] > b[sKey] ? 1 : -1
+            : parseInt(a[sKey], 10) > parseInt(b[sKey], 10) ? 1 : -1
+        })
+        : oData.sort((a, b) => {
+            console.log(parseInt(a[sKey], 10))
+            return typeof a[sKey] == 'string'
+            ? a[sKey] < b[sKey] ? 1 : -1
+            : parseInt(a[sKey], 10) < parseInt(b[sKey], 10) ? 1 : -1
+        })
         return oData
     }
 }

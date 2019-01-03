@@ -18,7 +18,7 @@ class TableView extends View {
         this._clearContainer.call(this.oTable)
         let oTableBody = this._createElement('tbody', {})
         aData.forEach(oItem => {
-            let oId      = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.id)
+            let oId      = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.id.toString())
             let oName    = this._createElement('td', { className: 'table-body__cell' }, oItem.name)
             let oSurname = this._createElement('td', { className: 'table-body__cell' }, oItem.surname)
             let oBorn    = this._createElement('td', { className: 'table-body__cell' }, oItem.born)

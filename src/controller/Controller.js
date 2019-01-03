@@ -27,7 +27,7 @@ class Controller {
     }
 
     sortData(id) {
-        this.oView.renderTable(this.model.sortData(id))
+        this.oView.renderTable(this.oModel.sortData(id))
         console.log(`Sorting data by ${id}`)
     }
 
