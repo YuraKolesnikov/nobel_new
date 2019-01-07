@@ -7,15 +7,17 @@ import buttons from './buttons'
 
 
 /* Importing modules */
+/* URL Parser */
 import URLParser        from './router/URLParser'
+/* Model */
 import TableModel       from './model/TableModel'
 import SelectorModel    from './model/SelectorModel'
-
+/* View */
 import TableView        from './view/TableView'
 import ButtonView       from './view/ButtonView'
 import SelectorView     from './view/SelectorView'
 import ModalView        from './view/ModalView'
-
+/* Controller */
 import Controller       from './controller/Controller'
 
 
@@ -37,7 +39,7 @@ const oModalWindow  = new ModalView('modal_window')
 /* Rendering dropdowns */
 const oYearSelectorView      = new SelectorView('changeYear', 'yearSelector')
 const oCountrySelectorView   = new SelectorView('changeCountry', 'countrySelector');
-setTimeout(() => oCountrySelectorView.renderDropdown(oCountrySelectorModel.getData()), 1000)
+setTimeout(() => oCountrySelectorView.renderDropdown(oCountrySelectorModel.getData()), 0)
 
 let sThisYear = (new Date()).getFullYear() + 1
 let aYearData = []
@@ -51,11 +53,6 @@ oYearSelectorView.renderDropdown(aYearData)
 
 /* URL Parser */
 const oURLParser = new URLParser()
-oURLParser.getUrl({
-    category: 'all',
-    country: 'all',
-    year: 'all'
-})
 
 /* Controller */
 const oFilterSet = {
@@ -64,6 +61,4 @@ const oFilterSet = {
     third: oYearSelectorView
 }
 
-const oController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
-
-console.log('Test')
+const oMainController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)

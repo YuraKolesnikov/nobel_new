@@ -47,7 +47,7 @@ class Controller {
     }
 
     renderModal(id) {
-        let oItem = this.oModel._getObjectById(id)
+        const oItem = this.oModel._getObjectById(id)
         this.oModalWindow.renderModal(oItem)
     }
 }
