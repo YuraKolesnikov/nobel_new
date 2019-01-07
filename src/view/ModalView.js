@@ -25,7 +25,7 @@ class ModalView extends View {
 
         /* Rendering modalWindow head */
         oName = this._createElement('h2', { className: 'modal-window__name' }, `${oItem.name} ${oItem.surname}`)
-        oSpan = this._createElement('span', { className: 'modal-window__span' }, oItem.born !== '-' ? `${oItem.born} - ${oItem.died}` : 'Unknown')
+        oSpan = this._createElement('span', { className: 'modal-window__span' }, oItem.born !== '' && oItem.died !== ''  ? `${oItem.born} - ${oItem.died}` : 'Unknown')
         oModalHead = this._createElement('div', { className: 'modal-window__head flex' }, oName, oSpan)
 
         /* Rendering modalWindow body */
