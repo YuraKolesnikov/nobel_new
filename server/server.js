@@ -20,24 +20,19 @@ app.get('/', (req, res) => {
 
 app.get('/laureates', (req, res) => {
     Laureate.find()
-    .then((laureates) => {
-        res.send({laureates})
-    }, (e) => {
-        res.status(400).send(e)
-    })
+    .then((laureates) => res.send({laureates}))
+    .catch((e) => res.status(400).send(e))
 })
 
 app.get('/laureates/:id', (req, res) => {
     const id = req.params.id
     Laureate.findById(id)
     .then((todo) => {
-        if (!todo) {
-            res.status(404).send('Unable to find todo item with corresponding id')
-        }
-        res.send({todo})
-    }, (e) => {
-        res.status(400).send(e)
+        return !todo
+        ? res.status(404).send('Unable to find todo item with corresponding id')
+        : res.send({todo})
     }) 
+    .catch((e) => res.status(400).send(e))
 })
 
 /* POST Requests */
@@ -48,11 +43,21 @@ app.post('/laureates', (req, res) => {
     })
 
     laureate.save()
-    .then((laureate) => {
-        res.send(laureate)
-    }, (e) => {
-        res.status(400).send(e)
-    })
+    .then((laureate) => res.send(laureate))
+    .catch((e) => res.status(400).send(e))
 })
+
+/* DELETE Requests */
+app.delete('/laureates/:id', (req, res) => {
+    const id = req.params.id
+    Laureate.findByIdAndRemove(id)
+    .then((laureate) => {
+        return !laureate
+        ? res.status(404).send()
+        : res.send({laureate})
+    })
+    .catch((e) => res.status(400).send(e))
+})
+
 /* Listen */
 app.listen(port, () => console.log(`App started on port ${port}`))
