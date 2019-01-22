@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/YuraKolesnikov/nobel_new/issues"
   },
-  "homepage": "https://github.com/YuraKolesnikov/nobel_new#readme"
+  "homepage": "https://github.com/YuraKolesnikov/nobel_new#readme",
+  "dependencies": {}
 }

@@ -13,12 +13,12 @@ class TableModel extends Model {
         return sValue === undefined ? sValue = 'Unknown' : sValue === '0000-00-00' ? sValue = '' : sValue
     }
     _getAge(sBorn, sDied) {
-        let nAge;
+        let nAge
         if (sDied !== '0000-00-00') {
             nAge = parseInt(sDied, 10) - parseInt(sBorn, 10)
         }
         else {
-            var d = new Date().toISOString().substr(0, 10)
+            const d = new Date().toISOString().substr(0, 10)
             nAge = parseInt(d, 10) - parseInt(sBorn, 10)
         }
         return nAge;
@@ -32,6 +32,7 @@ class TableModel extends Model {
                 died: this._validateValue(item.died),
                 age: this._getAge(item.born, item.died),
                 country: this._validateValue(item.bornCountry),
+                /* Change to 'filter-anchor', 'description-1', 'description-2', 'info-title', 'additional-info' */
                 filterAnchor: this._validateValue(item.bornCountryCode),
                 description1: 'Born in ' + this._validateValue(item.bornCity) + ', ' + this._validateValue(item.bornCountry),
                 description2: 'Died in ' + this._validateValue(item.diedCity) + ', ' + this._validateValue(item.diedCountry),
@@ -70,19 +71,16 @@ class TableModel extends Model {
             .filter(object => sCountryCode && object.filterAnchor != sCountryCode ? false : true)
         return this._aFilteredData
     }
-    sortData(sKey) {
+    sortData(sKey = 'id') {
         let oData = this._aFilteredData
-        sKey = sKey === undefined ? 'id' : sKey
         this.ascending = !this.ascending
         this.ascending == true
         ? oData.sort((a, b) => {
-            console.log(parseInt(a[sKey], 10))
             return typeof a[sKey] == 'string'
             ? a[sKey] > b[sKey] ? 1 : -1
             : parseInt(a[sKey], 10) > parseInt(b[sKey], 10) ? 1 : -1
         })
         : oData.sort((a, b) => {
-            console.log(parseInt(a[sKey], 10))
             return typeof a[sKey] == 'string'
             ? a[sKey] < b[sKey] ? 1 : -1
             : parseInt(a[sKey], 10) < parseInt(b[sKey], 10) ? 1 : -1
