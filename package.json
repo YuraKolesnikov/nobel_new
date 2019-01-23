@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-all": "cd client && npm i && cd .. & cd server && npm i",
-    "start-server-dev": "npm start --prefix server",
-    "start-server-build": "npm run build --prefix server",
-    "start-client-dev": "npm start --prefix client",
-    "start-client-build": "npm run install-all && npm run build --prefix client",
+    "server-dev": "npm start --prefix server",
+    "server-build": "npm run build --prefix server",
+    "client-dev": "npm start --prefix client",
+    "client-build": "npm run install-all && npm run build --prefix client",
     "clear": "rm client/public/build.js client/public/build.css rm -rf client/public/fonts"
   },
   "repository": {

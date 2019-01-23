@@ -9,9 +9,11 @@ class TableModel extends Model {
     _getObjectById(sID) {
         return this._aFilteredData.find(element => element.id == sID)
     }
+    
     _validateValue(sValue) {
         return sValue === undefined ? sValue = 'Unknown' : sValue === '0000-00-00' ? sValue = '' : sValue
     }
+    
     _getAge(sBorn, sDied) {
         let nAge
         if (sDied !== '0000-00-00') {
@@ -23,6 +25,7 @@ class TableModel extends Model {
         }
         return nAge;
     }
+    
     _prepareData() {
         const aMutatedData = this._oData.map(item => ({
                 id: parseInt(this._validateValue(item.id), 10) || '',
@@ -51,6 +54,7 @@ class TableModel extends Model {
         }), this)
         return aMutatedData
     }
+
     filterData(oFilter) {
         let sCategory = oFilter.category
         sCategory === 'all' ? sCategory = '' : sCategory
@@ -71,6 +75,7 @@ class TableModel extends Model {
             .filter(object => sCountryCode && object.filterAnchor != sCountryCode ? false : true)
         return this._aFilteredData
     }
+
     sortData(sKey = 'id') {
         let oData = this._aFilteredData
         this.ascending = !this.ascending

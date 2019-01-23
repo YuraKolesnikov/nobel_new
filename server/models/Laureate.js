@@ -10,5 +10,15 @@ module.exports.Laureate = mongoose.model('Laureate', {
         type: String,
         required: true,
         minlength: 1
+    },
+    category: {
+        type: String,
+        required: false,
+        minlength: 1
+    },
+    country: {
+        type: String,
+        required: true,
+        minlength: 1
     }
 })
