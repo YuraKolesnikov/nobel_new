@@ -20,14 +20,12 @@ import ModalView     from './mvc/view/ModalView'
 import Controller    from './mvc/controller/Controller'
 
 
-
 /* Declaring instances */
 /* Model */
 const oTableModel = new TableModel('./data/laureate.json')
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
 /* View */
-const view  = new TableView('laureates')
 /* Rendering buttons */
 const oSidebarButtons = new ButtonView(buttons.sidebarData, 'changeCategory', 'categoryButtons', 'sidebar-buttons')
 const oHeaderButtons  = new ButtonView(buttons.tableHeaderData, 'sortTable', 'tableHeaderButtons', 'table-header')
