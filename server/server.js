@@ -8,7 +8,7 @@ const app = express()
 const publicPath = path.join(__dirname, '../client/public')
 console.log(publicPath)
 /* Using middleware */
-app.use('/api/laureates', api)
+app.use('/api', api)
 app.use(express.static(publicPath))
 
 /* Listen */

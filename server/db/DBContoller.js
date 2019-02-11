@@ -1,11 +1,19 @@
 const _ = require('lodash')
+const { Laureate } = require('../models/Laureate')
 class DBController { 
     constructor(model) {
         this.MODEL = model
     }
 
     fetchCollection() {
-        return this.MODEL.find({})
+        console.log("dbc 1");
+        //console.log(this.MODEL.find({}));
+        const data = 
+        this.MODEL.find({})
+        .then(laureates => {
+            res.send(laureates)
+        })
+        .catch(e => res.send(e))
     }
 
     fetchDocument(req, res) {
