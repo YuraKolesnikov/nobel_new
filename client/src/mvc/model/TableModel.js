@@ -29,6 +29,7 @@ class TableModel extends Model {
     _prepareData() {
         const aMutatedData = this._oData.map(item => ({
                 id: parseInt(this._validateValue(item.id), 10) || '',
+                _id: item._id,
                 name: this._validateValue(item.firstname) || this._validateValue(item.name),
                 surname: this._validateValue(item.surname) || this._validateValue(item.lastname),
                 born: this._validateValue(item.born),
