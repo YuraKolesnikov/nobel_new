@@ -6,7 +6,7 @@ module.exports.Laureate = mongoose.model('Laureate', {
         unique: true,
         minlength: 1
     },
-    name: {
+    firstname: {
         type: String,
         required: true,
         minlength: 1

@@ -35,7 +35,6 @@ class TableModel extends Model {
                 died: this._validateValue(item.died),
                 age: this._getAge(item.born, item.died),
                 country: this._validateValue(item.bornCountry),
-                /* Change to 'filter-anchor', 'description-1', 'description-2', 'info-title', 'additional-info' */
                 filterAnchor: this._validateValue(item.bornCountryCode),
                 description1: 'Born in ' + this._validateValue(item.bornCity) + ', ' + this._validateValue(item.bornCountry),
                 description2: 'Died in ' + this._validateValue(item.diedCity) + ', ' + this._validateValue(item.diedCountry),
@@ -52,7 +51,7 @@ class TableModel extends Model {
                     }))
                 }))
         }), this)
-        return aMutatedData
+        return aMutatedData 
     }
 
     filterData(oFilter) {

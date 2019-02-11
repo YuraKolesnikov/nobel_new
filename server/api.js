@@ -9,12 +9,14 @@ const dbController = new DBController(Laureate)
 const router = express.Router()
 router.use(bodyParser.json())
 /* GET Requests */
-router.get('/', (req, res) => {
-    res.send('Hello world!')
+router.get('/', async (req, res) => {
+    const laureates = await Laureate.find({})
+    res.status(200).json(laureates)
 })
 
-router.get('/laureates', (req, res) => {
-    dbController.fetchCollection(req, res)
+router.get('/laureates', async (req, res) => {
+    const data = await dbController.fetchCollection()
+    res.status(200).json(data)
 })
 
 router.get('/laureates/filterByName', (req, res) => {

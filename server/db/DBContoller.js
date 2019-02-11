@@ -4,16 +4,11 @@ class DBController {
         this.MODEL = model
     }
 
-    fetchCollection(req, res) {
-        this.MODEL.find()
-        .then((laureates) => res.send({laureates}))
-        .catch((e) => res.status(400).send(e))
+    fetchCollection() {
+        return this.MODEL.find({})
     }
 
     fetchDocument(req, res) {
-        /* console.log(req.query)
-        const name = req.query.name || 'Charlie Puth'
-        const category = req.query.category || 'rock' */
         const id = req.query.id
         this.MODEL.find({id})
         .then((laureate) => {
