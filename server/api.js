@@ -14,10 +14,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/laureates', (req, res) => {
-    const a = dbController.fetchCollection(req, res)
+    dbController.fetchCollection(req, res)
 })
 
-router.get('/laureates/:id', (req, res) => {
+router.get('/laureates/filterByName', (req, res) => {
     dbController.fetchDocument(req, res)
 })
 
@@ -25,32 +25,9 @@ router.get('/laureates/category/:category', (req, res) => {
     dbController.filterByCategory(req, res)
 })
 
-router.get('/laureates/category/:category/country/:country', (req, res) => {
-    const category = req.params.category
-    const country = req.params.country
-    Laureate.find({category, country})
-    .then(laureates => {
-        return !laureates
-        ? res.status(404).send('Unable to find laureates with corresponding category')
-        : res.send({laureates})
-    })
-    .catch((e) => res.status(400).send(e))
+router.get('/laureates/:firstCategory/:firstParameter/:secondCategory/:secondParameter', (req, res) => {
+    dbController.filterByDynamicCategory(req, res)
 })
-
-router.get('/laureates/:category/:parameter', (req, res) => {
-    const category  = req.params.category
-    const parameter = req.params.parameter
-    console.log(req.params)
-    const where = {};
-    where[category] = parameter;
-    Laureate.find(where)
-    .then(laureates => {
-        return !laureates
-        ? res.status(404).send('Unable to find laureates with corresponding category')
-        : res.send({laureates})
-    })
-    .catch((e) => res.status(400).send(e))
-  })
 
 /* POST Requests */
 router.post('/laureates', (req, res) => {
@@ -59,27 +36,12 @@ router.post('/laureates', (req, res) => {
 
 /* DELETE Requests */
 router.delete('/laureates/:id', (req, res) => {
-    const id = req.params.id
-    Laureate.findByIdAndRemove(id)
-    .then(laureate => {
-        return !laureate
-        ? res.status(404).send()
-        : res.send({laureate})
-    })
-    .catch((e) => res.status(400).send(e))
+    dbController.deleteDocument(req, res)
 })
 
 /* PATCH Requests */
 router.patch('/laureates/:id', (req, res) => {
-    const id = req.params.id
-    const body = _.pick(req.body, ['name', 'category', 'country'])
-    Laureate.findByIdAndUpdate(id, { $set: body }, {new: true})
-    .then(laureate => {
-        return !laureate
-        ? res.status(404).send()
-        : res.send({laureate})
-    })
-    .catch((e) => res.status(400).send(e))
+    dbController.updateDocument(req, res)
 })
 
 module.exports = router
