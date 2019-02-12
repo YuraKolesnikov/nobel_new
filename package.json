@@ -10,6 +10,7 @@
     "server-build": "npm run build --prefix server",
     "client-dev": "npm start --prefix client",
     "client-build": "npm run build --prefix client",
+    "deploy": "npm run install-all && npm run server-build",
     "clear": "rm client/public/build.js client/public/build.css rm -rf client/public/fonts"
   },
   "repository": {

@@ -3,12 +3,12 @@ class DataHandler {
     this.db = db
   }
 
-  fetchLaureates() {
-    return this.db.fetchLaureates()
+  getLaureates() {
+    return this.db.getLaureates()
   }
 
-  fetchLaureate(req, res) {
-    return this.db.fetchLaureate(req, res)
+  getLaureate(req, res) {
+    return this.db.getLaureate(req, res)
   }
 
   createLaureate(req, res) {
