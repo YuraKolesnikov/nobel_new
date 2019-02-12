@@ -15,8 +15,5 @@ module.exports.Laureate = mongoose.model('Laureate', {
         type: String,
         required: true,
         minlength: 1
-    },
-    born: {
-        
     }
 })

@@ -1,22 +1,61 @@
 const _ = require('lodash')
 const { mongoose } = require('./mongoose')
+const ObjectID = mongoose.Types.ObjectId
+const { Laureate } = require('../models/Laureate')
+
 class MongoDBController { 
     constructor(model) {
         this.MODEL = model
+        this.keys = ['id', 'firstname', 'surname']
     }
 
-    fetchCollection() {
+    fetchLaureates() {
         return this.MODEL.find({})
     }
 
-    fetchDocument(req, res) {
-        const id = req.query.id
-        this.MODEL.find({id})
+    fetchLaureate(req, res) {
+        const id = req.params.id
+        if (!ObjectID.isValid(id)) {
+            return res.status(404).send('Invalid ID!')
+        }
+        this.MODEL.findById(id)
         .then((laureate) => {
             return !laureate
             ? res.status(404).send('Unable to find laureate with corresponding id')
             : res.send({laureate})
         }) 
+        .catch((e) => res.status(400).send(e))
+    }
+
+    createLaureate(req, res) {
+        const body = _.pick(req.body, this.keys)
+        let laureate = new this.MODEL(body)
+
+        laureate.save()
+        .then((laureate) => res.send(laureate))
+        .catch((e) => res.status(400).send(e))
+    }
+
+    deleteLaureate(req, res) {
+        const id = req.params.id
+        Laureate.findByIdAndRemove(id)
+        .then(laureate => {
+            return !laureate
+            ? res.status(404).send()
+            : res.send({laureate})
+        })
+        .catch((e) => res.status(400).send(e))
+    }
+
+    updateLaureate(req, res) {
+        const id = req.params.id
+        const body = _.pick(req.body, this.keys)
+        Laureate.findByIdAndUpdate(id, { $set: body }, {new: true})
+        .then(laureate => {
+            return !laureate
+            ? res.status(404).send()
+            : res.send({laureate})
+        })
         .catch((e) => res.status(400).send(e))
     }
 
@@ -45,38 +84,6 @@ class MongoDBController {
             return !laureates
             ? res.status(404).send('Unable to find laureates with corresponding category')
             : res.send({laureates})
-        })
-        .catch((e) => res.status(400).send(e))
-    }
-    
-    createDocument(req, res) {
-        const body = _.pick(req.body, ['id', 'name', 'category', 'country'])
-        let laureate = new this.MODEL(body)
-
-        laureate.save()
-        .then((laureate) => res.send(laureate))
-        .catch((e) => res.status(400).send(e))
-    }
-
-    deleteDocument(req, res) {
-        const id = req.params.id
-        Laureate.findByIdAndRemove(id)
-        .then(laureate => {
-            return !laureate
-            ? res.status(404).send()
-            : res.send({laureate})
-        })
-        .catch((e) => res.status(400).send(e))
-    }
-
-    updateDocument(req, res) {
-        const id = req.params.id
-        const body = _.pick(req.body, ['name', 'category', 'country'])
-        Laureate.findByIdAndUpdate(id, { $set: body }, {new: true})
-        .then(laureate => {
-            return !laureate
-            ? res.status(404).send()
-            : res.send({laureate})
         })
         .catch((e) => res.status(400).send(e))
     }

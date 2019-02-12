@@ -26,7 +26,7 @@ class TableView extends View {
             let oAge     = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.age.toString())
             let oCountry = this._createElement('td', { className: 'table-body__cell' }, oItem.country)
             let oInfo    = this._createElement('td', { className: 'table-body__cell' }, this._reduceObjectToArray(oItem.info).toString())
-            let oBodyRow = this._createElement('tr', { id: oItem.id, 'data-id': oItem._id }, oId, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
+            let oBodyRow = this._createElement('tr', { id: oItem.id }, oId, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
             oBodyRow.addEventListener('click', this.handleRowClick.bind(this))
             oTableBody.appendChild(oBodyRow)
         }, this)
