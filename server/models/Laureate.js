@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 module.exports.Laureate = mongoose.model('Laureate', {
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
         minlength: 1
@@ -11,14 +11,12 @@ module.exports.Laureate = mongoose.model('Laureate', {
         required: true,
         minlength: 1
     },
-    category: {
-        type: String,
-        required: false,
-        minlength: 1
-    },
-    country: {
+    surname: {
         type: String,
         required: true,
         minlength: 1
+    },
+    born: {
+        
     }
 })

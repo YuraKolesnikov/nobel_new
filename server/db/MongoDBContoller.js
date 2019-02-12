@@ -1,5 +1,6 @@
 const _ = require('lodash')
-class DBController { 
+const { mongoose } = require('./mongoose')
+class MongoDBController { 
     constructor(model) {
         this.MODEL = model
     }
@@ -81,4 +82,4 @@ class DBController {
     }
 }
 
-module.exports = { DBController }
+module.exports = { MongoDBController }

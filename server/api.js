@@ -1,13 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const _ = require('lodash')
-const { mongoose } = require('./db/mongoose')
-const { Laureate } = require('./models/Laureate')
-const { DBController } = require('./db/DBContoller')
 
-const dbController = new DBController(Laureate)
+const { Laureate } = require('./models/Laureate')
+const { MongoDBController } = require('./db/MongoDBContoller')
+
+const mongoDBController = new MongoDBController(Laureate)
 const router = express.Router()
 router.use(bodyParser.json())
+
 /* GET Requests */
 router.get('/', async (req, res) => {
     const laureates = await Laureate.find({})
@@ -15,35 +15,35 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/laureates', async (req, res) => {
-    const data = await dbController.fetchCollection()
+    const data = await mongoDBController.fetchCollection()
     res.status(200).json(data)
 })
 
 router.get('/laureates/filterByName', (req, res) => {
-    dbController.fetchDocument(req, res)
+    mongoDBController.fetchDocument(req, res)
 })
 
 router.get('/laureates/category/:category', (req, res) => {
-    dbController.filterByCategory(req, res)
+    mongoDBController.filterByCategory(req, res)
 })
 
 router.get('/laureates/:firstCategory/:firstParameter/:secondCategory/:secondParameter', (req, res) => {
-    dbController.filterByDynamicCategory(req, res)
+    mongoDBController.filterByDynamicCategory(req, res)
 })
 
 /* POST Requests */
-router.post('/laureates', (req, res) => {
-    dbController.createDocument(req, res)
+router.post('/laureates/add', (req, res) => {
+    mongoDBController.createDocument(req, res)
 })
 
 /* DELETE Requests */
-router.delete('/laureates/:id', (req, res) => {
-    dbController.deleteDocument(req, res)
+router.delete('/laureates/delete/:id', (req, res) => {
+    mongoDBController.deleteDocument(req, res)
 })
 
 /* PATCH Requests */
-router.patch('/laureates/:id', (req, res) => {
-    dbController.updateDocument(req, res)
+router.patch('/laureates/update/:id', (req, res) => {
+    mongoDBController.updateDocument(req, res)
 })
 
 module.exports = router
