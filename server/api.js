@@ -12,13 +12,13 @@ router.use(bodyParser.json())
 
 /* GET Requests */
 router.get('/laureates', async (req, res) => {
-    const data = await dataHandler.fetchLaureates()
+    const data = await dataHandler.getLaureates()
     res.status(200).json(data)
 })
 
 /* localhost:3000/api/laureates/5c6173de5a6fa337d45b907b - should return Wilhem Conrad */
 router.get('/laureates/:id', (req, res) => {
-    dataHandler.fetchLaureate(req, res)
+    dataHandler.getLaureate(req, res)
 })
 
 /* router.get('/laureates/category/:category', (req, res) => {

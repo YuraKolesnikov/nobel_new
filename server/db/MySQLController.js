@@ -1,9 +1,9 @@
 class MySQLController {
   constructor() {}
 
-  fetchLaureates() {}
+  getLaureates() {}
 
-  fetchLaureate() {}
+  getLaureate() {}
 
   createLaureate() {}
 

@@ -9,11 +9,11 @@ class MongoDBController {
         this.keys = ['id', 'firstname', 'surname']
     }
 
-    fetchLaureates() {
+    getLaureates() {
         return this.MODEL.find({})
     }
 
-    fetchLaureate(req, res) {
+    getLaureate(req, res) {
         const id = req.params.id
         if (!ObjectID.isValid(id)) {
             return res.status(404).send('Invalid ID!')
