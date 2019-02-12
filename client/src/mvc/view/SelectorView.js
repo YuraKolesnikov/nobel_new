@@ -11,7 +11,7 @@ class SelectorView extends View {
         this.oDropdown.appendChild(oDefaultOption)
         aData.forEach((item, index) => {
             let sCode    = item.code || index
-            let oOption  = this._createElement('option', { 'data-id': sCode }, `${item.name}`)
+            let oOption  = this._createElement('option', { className: 'dropdown-primary__option', 'data-id': sCode }, `${item.name}`)
             this.oDropdown.appendChild(oOption)
         }, this);
         this.oDropdown.addEventListener('change', this.handleChange.bind(this))

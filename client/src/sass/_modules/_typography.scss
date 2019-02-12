@@ -1,0 +1,33 @@
+.title-primary {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.title-secondary {
+  font-size: 24px;
+}
+
+.text-lead {
+  padding-top: 10px;
+  color: $darkGray;
+}
+
+.text-italic {
+  font-style: oblique;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: $darkGray;
+  padding-bottom: 0px;
+  padding-top: 25px;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  @include transition(.35s);
+  &:hover {
+      color: $darkGrayHover;
+      padding-bottom: 8px;
+      border-bottom: 2px solid $darkGrayHover;
+  }
+}

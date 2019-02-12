@@ -9,14 +9,14 @@
     <link type="text/css" rel="stylesheet" href="build.css">
 </head>
 <body>
-    <main id="app" class="main-container grid">
-        <h1>The list of the greatest</h1>
+    <main id="app" class="space--md grid">
+        <h1 class="title-primary">The list of the greatest</h1>
         <div id="modal_window" class="modal-window hidden"></div>
-        <div class="sidebar">
-            <h2>Choose filters</h2>
-            <div class="sidebar__filter-buttons" id="categoryButtons"></div>
-            <select class="sidebar__dropdown" id="countrySelector"></select>
-            <select class="sidebar__dropdown" id="yearSelector"></select>
+        <div class="sidebar flex">
+            <h2 class="title-secondary">Choose filters</h2>
+            <div id="categoryButtons"></div>
+            <select class="dropdown-primary" id="countrySelector"></select>
+            <select class="dropdown-primary" id="yearSelector"></select>
         </div>
         <div class="table">
             <div class="table-header">

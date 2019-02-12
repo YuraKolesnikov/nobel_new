@@ -1,0 +1,22 @@
+.dropdown-primary {
+  -webkit-appearance: none;
+  font-size: 1em;
+  font-family: inherit;
+  margin: 5px 0;
+  color: inherit;
+  border: none;
+  padding: 10px;
+  @include pointer;
+  @include transition(.5s);
+  @include transparentBackground(0.3);
+
+  &:hover {
+      @include transparentBackground(0.6);   
+  }  
+  
+  &__option {
+      color: white;
+      font-family: 'Montserrat Regular';
+      background: $lightgreen;
+  }
+}

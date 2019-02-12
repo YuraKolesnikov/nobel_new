@@ -1,5 +1,5 @@
 /* Importing polyfills for IE11 and styles */
-import './sass/main.sass'
+import './sass/main.scss'
 import '@babel/polyfill'
 /* Bricks */
 import buttons from './mvc/buttons'
@@ -22,7 +22,10 @@ import Controller    from './mvc/controller/Controller'
 
 /* Declaring instances */
 /* Model */
-const oTableModel = new TableModel('/api/laureates')
+/* Client development */
+const oTableModel = new TableModel('./data/laureate.json')
+/* Server development */
+//const oTableModel = new TableModel('/api/laureates')
 console.log(oTableModel._loadData())
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 

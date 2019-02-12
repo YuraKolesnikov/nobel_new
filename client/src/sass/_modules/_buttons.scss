@@ -1,0 +1,43 @@
+.btn {
+  display: block;
+  @include transition(.5s);
+  @include pointer;
+  &:hover {
+      @include transparentBackground(0.3); 
+  }
+
+  &-primary {
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    padding: 15px 0 15px 8px;
+  }
+
+  &-delete {
+
+  }
+
+  &-add {
+
+  }
+
+  &-edit {
+
+  }
+
+  &-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    transform: rotate(45deg) translateZ(0);
+    font-size: 24px;
+    color: $darkGray;
+    margin-right: 5px;
+    @include pointer;
+    @include transition(.35s);
+    &:hover { transform: translateY(-2px) rotate(45deg) translateZ(0) }
+  }
+}
+

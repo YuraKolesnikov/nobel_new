@@ -1,0 +1,25 @@
+@mixin transition($time) {
+    -webkit-transition: all $time ease;
+    -ms-transition:     all $time ease;
+    transition:         all $time ease;
+}
+@mixin verticalPadding($size) {
+    padding-top: $size;
+    padding-bottom: $size;
+}
+
+@mixin verticalMargin($size) {
+    margin-top: $size;
+    margin-bottom: $size;
+}
+
+@mixin pointer { cursor: pointer };
+    
+@mixin transparentBackground($opacity) { 
+    background-color: rgba(255, 255, 255, $opacity)
+}
+    
+@mixin noPadding { padding: 0 }
+    
+@mixin noMargin { margin: 0 }
+    

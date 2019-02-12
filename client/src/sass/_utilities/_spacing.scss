@@ -1,0 +1,80 @@
+/* 
+Paddings and margins 
+10 - Vertical padding
+22 - Left Padding
+34 - Right Padding
+46 - Vertical Margin (used for container spacing only!)
+58 - Left Margin
+70 - Right Margin
+*/
+.py {
+  &-xxs { @include verticalPadding(5px) }
+
+  &-xs { @include verticalPadding(10px) }
+
+  &-sm { @include verticalPadding(15px) }
+
+  &-md { @include verticalPadding(20px) }
+
+  &-lg { @include verticalPadding(30px) }
+}
+
+.p-left {
+  &-xxs { padding-left: 5px }
+
+  &-xs { padding-left: 10px }
+
+  &-sm { padding-left: 15px }
+
+  &-md { padding-left: 20px }
+
+  &-lg { padding-left: 30px }
+}
+
+.p-right {
+  &-xxs { padding-right: 5px }
+
+  &-xs { padding-right: 10px }
+
+  &-sm { padding-right: 15px }
+
+  &-md { padding-right: 20px }
+
+  &-lg { padding-right: 30px }
+}
+
+.my {
+  &-xxs { @include verticalMargin(10px) }
+
+  &-xs { @include verticalMargin(20px) }
+
+  &-sm { @include verticalMargin(30px) }
+
+  &-md { @include verticalMargin(40px) }
+
+  &-lg { @include verticalMargin(50px) }
+}
+
+.m-left {
+  &-xxs { margin-left: 5px }
+
+  &-xs { margin-left: 10px }
+
+  &-sm { margin-left: 15px }
+
+  &-md { margin-left: 20px }
+
+  &-lg { margin-left: 30px }
+}
+
+.m-right {
+  &-xxs { margin-right: 5px }
+
+  &-xs { margin-right: 10px }
+
+  &-sm { margin-right: 15px }
+
+  &-md { margin-right: 20px }
+
+  &-lg { margin-right: 30px }
+}

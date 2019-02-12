@@ -16,9 +16,9 @@ class ButtonView extends View {
             sClassForButton  = 'table-header__cell'
             sTagForButton    = 'th'
         } else if (this.sFunctionality === 'sidebar-buttons') {
-            sClassForButton  = 'button sidebar__filter-button'
+            sClassForButton  = 'btn btn-primary'
             sTagForButton    = 'a'
-        }
+        } 
         this.aData.forEach(item => {
             const oButton = this._createElement(sTagForButton, { className: sClassForButton + `${item.small ? ' table-header__cell-sm' : ''}`, 'data-id': item.id }, `${item.title}`)
             oButton.addEventListener('click', this.handleClick.bind(this))

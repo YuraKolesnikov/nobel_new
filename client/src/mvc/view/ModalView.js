@@ -25,7 +25,7 @@ class ModalView extends View {
 
         /* Rendering modalWindow head */
         oName = this._createElement('h2', { className: 'modal-window__name' }, `${oItem.name} ${oItem.surname}`)
-        oSpan = this._createElement('span', { className: 'modal-window__span' }, oItem.born !== '' && oItem.died !== ''  ? `${oItem.born} - ${oItem.died}` : 'Unknown')
+        oSpan = this._createElement('span', { className: 'text-lead' }, oItem.born !== '' && oItem.died !== ''  ? `${oItem.born} - ${oItem.died}` : 'Unknown')
         oModalHead = this._createElement('div', { className: 'modal-window__head flex' }, oName, oSpan)
 
         /* Rendering modalWindow body */
@@ -48,16 +48,17 @@ class ModalView extends View {
                     ${item.additionalInfo[0].country}`)
             }
 
-            let oCaption = this._createElement('p', { className: 'italic' }, item.caption)
+            let oCaption = this._createElement('p', { className: 'text-italic' }, item.caption)
             let listItem = this._createElement('li', { className: 'modal-window__info-item flex' }, yearAndSubject, oAdditionalInfo, oCaption)
             oInfoList.appendChild(listItem)
         }, this)
+        
         /* Adapting height depending on list item count */
         this._adaptHeight(oItem.info.length)
 
         /* Button and link creating */
-        oLearnMore = this._createElement('a', { className: 'modal-window__link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.name}+${oItem.surname}`, target: '_blank' }, 'Learn more')
-        oButtonClose = this._createElement('button', { className: 'modal-window__button-close' }, '+')
+        oLearnMore = this._createElement('a', { className: 'nav-link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.name}+${oItem.surname}`, target: '_blank' }, 'Learn more')
+        oButtonClose = this._createElement('button', { className: 'btn-modal-close' }, '+')
         oButtonClose.addEventListener('click', this._closeWindow.bind(this))
 
         oModalBody = this._createElement('div', { className: 'modal-window__body'}, oDescription, oTitle, oInfoList, oLearnMore, oButtonClose)
