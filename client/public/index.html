@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nobel Prize Project</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link type="text/css" rel="stylesheet" href="build.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nobel Prize Project</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link type="text/css" rel="stylesheet" href="build.css">
 </head>
 <body>
-    <main id="app" class="space--md grid">
-        <h1 class="d-block text-center my-md">The list of the greatest</h1>
-        <div id="modal_window" class="modal-window py-md p-left-sm p-right-sm hidden"></div>
-        <div class="sidebar flex">
-            <h2 class="title-secondary">Choose filters</h2>
-            <div id="categoryButtons"></div>
-            <select class="dropdown-primary" id="countrySelector"></select>
-            <select class="dropdown-primary" id="yearSelector"></select>
-        </div>
-        <div class="table">
-            <div class="table-header">
-                <table class="table-header__layout table-fixed">
-                    <thead>
-                        <tr class="table-header__buttons" id="tableHeaderButtons"></tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="table-body">
-                <table id="laureatesTable" class="table-body__main table-fixed"></table>
-            </div>
-        </div>
-    </main>
-    <script src="build.js"></script>
+  <main id="app" class="space--md grid">
+    <h1 class="d-block text-center my-md">The list of the greatest</h1>
+    <div id="modal_window" class="modal-window py-md p-left-sm p-right-sm hidden"></div>
+    <div class="sidebar flex">
+      <h2 class="title-secondary">Choose filters</h2>
+      <div id="categoryButtons"></div>
+      <select class="dropdown-primary" id="countrySelector"></select>
+      <select class="dropdown-primary" id="yearSelector"></select>
+    </div>
+    <div class="table">
+      <div class="table-header">
+        <table class="table-header__layout table-fixed">
+            <thead>
+                <tr class="table-header__buttons" id="tableHeaderButtons"></tr>
+            </thead>
+        </table>
+      </div>
+      <div class="table-body">
+        <table id="laureatesTable" class="table-body__main table-fixed"></table>
+      </div>
+    </div>
+  </main>
+  <script src="build.js"></script>
 </body>
 </html>

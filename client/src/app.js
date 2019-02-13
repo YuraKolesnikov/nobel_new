@@ -9,8 +9,8 @@ import buttons from './mvc/buttons'
 /* URL Parser */
 import URLParser     from './router/URLParser'
 /* Model */
-import TableModel    from './mvc/model/TableModel'
-import SelectorModel from './mvc/model/SelectorModel'
+import TableModel    from './mvc/model/Table'
+import SelectorModel from './mvc/model/Selector'
 /* View */
 import TableView     from './mvc/view/TableView'
 import ButtonView    from './mvc/view/ButtonView'
