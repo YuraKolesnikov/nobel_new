@@ -16,6 +16,7 @@ import TableView     from './mvc/view/TableView'
 import ButtonView    from './mvc/view/ButtonView'
 import SelectorView  from './mvc/view/SelectorView'
 import ModalView     from './mvc/view/ModalView'
+import AdminView     from './mvc/view/AdminView'
 /* Controller */
 import Controller    from './mvc/controller/Controller'
 
@@ -23,9 +24,9 @@ import Controller    from './mvc/controller/Controller'
 /* Declaring instances */
 /* Model */
 /* Client development */
-//const oTableModel = new TableModel('./data/laureate.json')
+const oTableModel = new TableModel('./data/laureate.json')
 /* Server development */
-const oTableModel = new TableModel('/api/laureates')
+//const oTableModel = new TableModel('/api/laureates')
 console.log(oTableModel._loadData())
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 

@@ -23,7 +23,6 @@ class Controller {
 
     _loadData() {
         const aData = this.oModel.filterData(this._oFilter)
-        console.log(aData)
         this.oView.renderTable(aData);
         this.oURLParser.getUrl(this._oFilter)
     }

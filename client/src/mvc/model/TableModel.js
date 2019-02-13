@@ -25,21 +25,21 @@ class TableModel extends Model {
         const aMutatedData = this._oData.map(item => ({
                 id: parseInt(this._validateValue(item.id), 10) || '',
                 _id: item._id,
-                name: this._validateValue(item.firstname) || this._validateValue(item.name),
+                firstname: this._validateValue(item.firstname) || this._validateValue(item.name),
                 surname: this._validateValue(item.surname) || this._validateValue(item.lastname),
                 born: this._validateValue(item.born),
                 died: this._validateValue(item.died),
                 age: this._getAge(item.born, item.died),
-                country: this._validateValue(item.bornCountry),
-                filterAnchor: this._validateValue(item.bornCountryCode),
-                description1: 'Born in ' + this._validateValue(item.bornCity) + ', ' + this._validateValue(item.bornCountry),
-                description2: 'Died in ' + this._validateValue(item.diedCity) + ', ' + this._validateValue(item.diedCountry),
-                infoTitle: 'Prizes: ',
-                info: item.prizes.map(infoPiece => ({
-                    year: infoPiece.year,
-                    subject: infoPiece.category,
-                    caption: this._validateValue(infoPiece.motivation),
-                    additionalInfo: infoPiece.affiliations
+                bornCountry: this._validateValue(item.bornCountry),
+                bornCountryCode: this._validateValue(item.bornCountryCode),
+                bornCity: this._validateValue(item.bornCity),
+                diedCity: this._validateValue(item.diedCity),
+                infoTitle: 'Prizes',
+                prizes: item.prizes.map(prize => ({
+                    year: prize.year,
+                    category: prize.category,
+                    motivation: this._validateValue(prize.motivation),
+                    affiliations: prize.affiliations
                         .map(location => ({
                             name: this._validateValue(location.name),
                             city: this._validateValue(location.city),
@@ -59,15 +59,14 @@ class TableModel extends Model {
 
         let sYear = oFilter.year;
         sYear === 'all' ? sYear = '' : sYear
-        
         this._aFilteredData = this._prepareData()
             .filter(object => {
-                const oInfo = object.info.filter(item => 
-                    (sCategory && item.subject !== sCategory ? false : true) &&
+                const oPrizes = object.prizes.filter(item => 
+                    (sCategory && item.category !== sCategory ? false : true) &&
                     (sYear && item.year != sYear ? false : true))
-                return oInfo.length > 0
+                return oPrizes.length > 0
             })
-            .filter(object => sCountryCode && object.filterAnchor != sCountryCode ? false : true)
+            .filter(object => sCountryCode && object.bornCountryCode != sCountryCode ? false : true)
         return this._aFilteredData
     }
 

@@ -16,44 +16,46 @@ class ModalView extends View {
         this.oModalWindow.classList.add('visible')
         this.oModalWindow.classList.remove('hidden')
 
-        let oName, oSpan, oDescription, oTitle, oCaption, oAdditionalInfo, oInfoList, oLearnMore, oButtonClose, oModalHead, oModalBody;
+        let oName, oSpan, oDescription, oTitle, oMotivation, oAffiliations, oInfoList, oLearnMore, oButtonClose, oModalHead, oModalBody;
 
         /* Rendering modalWindow head */
-        oName = this._createElement('h2', { className: 'd-block text-left title-secondary' }, `${oItem.name} ${oItem.surname}`)
+        oName = this._createElement('h2', { className: 'd-block text-left title-secondary' }, `${oItem.firstname} ${oItem.surname}`)
         oSpan = this._createElement('span', { className: 'd-block text-lead my-xxs' }, oItem.born !== '' && oItem.died !== ''  ? `${oItem.born} - ${oItem.died}` : 'Unknown')
         oModalHead = this._createElement('div', {}, oName, oSpan)
 
         /* Rendering modalWindow body */
-        let oDesc1 = this._createElement('p', {}, oItem.description1)
-        let oDesc2 = this._createElement('p', {}, oItem.description2)
+        const bornIn = `Born in ${oItem.bornCity}, ${oItem.bornCountry}`
+        const diedIn = `Died in ${oItem.diedCity}, ${oItem.diedCountry}`
+        let oDesc1 = this._createElement('p', {}, bornIn)
+        let oDesc2 = this._createElement('p', {}, diedIn)
         oDescription = this._createElement('div', {}, oDesc1, oDesc2)
         oTitle = this._createElement('h3', { className: 'modal-window__caption my-xxs' }, `${oItem.infoTitle}:`)
         oInfoList = this._createElement('ul', { className: 'modal-window__info' })
         /* Rendering info section for modalWindow body */
-        oItem.info.forEach(item => {
-            let yearAndSubject = this._createElement('h4', { className: 'text-bold' }, `${item.year}, ${item.subject}`)
+        oItem.prizes.forEach(item => {
+            let yearAndSubject = this._createElement('h4', { className: 'text-bold' }, `${item.year}, ${item.category}`)
 
             /* Logical expression for better display. If one of the elements is unknown, render 'Place unknown' string */
-            if (item.additionalInfo[0].city === 'Unknown' || item.additionalInfo[0].country === 'Unknown') {
-                oAdditionalInfo = this._createElement('p', {}, `Place unknown`)
+            if (item.affiliations[0].city === 'Unknown' || item.affiliations[0].bornCountry === 'Unknown') {
+                oAffiliations = this._createElement('p', {}, `Place unknown`)
             } else {
-                oAdditionalInfo = this._createElement('p', {}, `
-                    ${item.additionalInfo[0].name}, 
-                    ${item.additionalInfo[0].city}, 
-                    ${item.additionalInfo[0].country}`)
+                oAffiliations = this._createElement('p', {}, `
+                    ${item.affiliations[0].name}, 
+                    ${item.affiliations[0].city}, 
+                    ${item.affiliations[0].country}`)
             }
 
-            let oCaption = this._createElement('p', { className: 'text-italic' }, item.caption)
-            let listItem = this._createElement('li', { className: 'modal-window__info-item flex my-xxs' }, yearAndSubject, oAdditionalInfo, oCaption)
+            let oMotivation = this._createElement('p', { className: 'text-italic' }, item.motivation)
+            let listItem = this._createElement('li', { className: 'modal-window__info-item flex my-xxs' }, yearAndSubject, oAffiliations, oMotivation)
             oInfoList.appendChild(listItem)
         }, this)
         
         /* Button and link creating */
-        oLearnMore = this._createElement('a', { className: 'nav-link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.name}+${oItem.surname}`, target: '_blank' }, 'Learn more')
+        oLearnMore = this._createElement('a', { className: 'nav-link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.firstname}+${oItem.surname}`, target: '_blank' }, 'Learn more')
         oButtonClose = this._createElement('button', { className: 'btn-modal-close' }, '+')
         oButtonClose.addEventListener('click', this._closeWindow.bind(this))
 
-        oModalBody = this._createElement('div', { className: 'modal-window__body'}, oDescription, oTitle, oInfoList, oLearnMore, oButtonClose)
+        oModalBody = this._createElement('div', { className: 'modal-window__body'}, oDescription , oTitle, oInfoList, oLearnMore, oButtonClose)
         
         /* Building modalWindow */
         this.oModalWindow.appendChild(oModalHead)
