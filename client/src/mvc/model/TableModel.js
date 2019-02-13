@@ -1,5 +1,4 @@
 import Model from './Model'
-import { type } from 'os';
 class TableModel extends Model {
     constructor(_sResourceUrl) {
         super(_sResourceUrl)
