@@ -42,26 +42,26 @@ npm run install-all
 ---
 **Backend**
 
-`/server`
-`--/db/` - Contains db controllers and main DataHandler, which connects to API
-`--/models/` - Contains the models for API Resources using *Mongoose*
-`--/api.js` - Routes for the API
-`--/server.js` - Server setup
+`/server`  
+`--/db/` - Contains db controllers and main DataHandler, which connects to API  
+`--/models/` - Contains the models for API Resources using *Mongoose*  
+`--/api.js` - Routes for the API  
+`--/server.js` - Server setup  
 
 **Frontend**
 
-`/.babelrc` - `babel` config
+`/.babelrc` - `babel` config  
 `/webpack.config.js` - `webpack` config
 
-`/src`
-`--/mvc/` - Contains MVC classes, EventEmitter class and buttonsets for rendering
-`--/router/` - URLParser class
-`--/app.js` - Registers MVC instances
-`--/scss/` - Stylesheets
+`/src`  
+`--/mvc/` - Contains MVC classes, EventEmitter class and buttonsets for rendering  
+`--/router/` - URLParser class  
+`--/app.js` - Registers MVC instances  
+`--/scss/` - Stylesheets  
 
-`/public`
-`--/data` - Mock data for early development and frontend testing
-`--/index.html` - Main file
+`/public`  
+`--/data` - Mock data for early development and frontend testing  
+`--/index.html` - Main file  
 `
 --/build.css
 --/build.js
@@ -99,17 +99,17 @@ All user endpoints are behind the `/api` endpoint.
 13.02.2019
 Right now POST, DELETE and PATCH requests are working only from Postman and have no interface in frontend
 
-**`GET`**
-`/laureates` - Return a list of all laureates
+**`GET`**  
+`/laureates` - Return a list of all laureates  
 `/laureates/:id` - Where `:id` is the id of a `laureate`.
 
-**`POST`**
+**`POST`**  
 `/laureates/add` - Create a new `laureate` based on the payload of the request
 
-**`DELETE`**
+**`DELETE`**  
 `/laureates/delete/:id` - Delete a laureate matching the `:id` specified
 
-**`PATCH`**
+**`PATCH`**  
 `/laureates/update/:id` - Update a user based on the payload of the request
 
 ---
