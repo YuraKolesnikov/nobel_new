@@ -10,10 +10,6 @@ class TableModel extends Model {
         return this._aFilteredData.find(element => element.id == sID)
     }
     
-    _validateValue(sValue) {
-        return sValue === undefined ? sValue = 'Unknown' : sValue === '0000-00-00' ? sValue = '' : sValue
-    }
-    
     _getAge(sBorn, sDied) {
         let nAge
         if (sDied !== '0000-00-00') {
