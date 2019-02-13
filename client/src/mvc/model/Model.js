@@ -9,18 +9,16 @@ class Model extends EventEmitter {
         this._loadData()
     }
 
-    _loadData() {
-        fetch(this._sResourceUrl)
-        .then(res => res.json())
-        .then(data => {
-            this._oData = data
-            this.emit('dataLoaded')
-        })
+    async _loadData() {
+        const res = await fetch(this._sResourceUrl);
+        const data = await res.json();
+        this._oData = data;
+        this.emit('dataLoaded');
     }
 
     _validateValue(value) {
         const maybeDate = value === '0000-00-00' ? value = '-' : value
-        return value === undefined ? value = 'Unknown' : maybeDate
+        return value === undefined || value === null ? value = 'Unknown' : maybeDate
     }
     
     getData() {

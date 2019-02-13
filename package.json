@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-all": "cd client && npm i && cd .. & cd server && npm i",
-    "server-dev": "npm start --prefix server",
+    "server-dev": "npm run client-build && npm start --prefix server",
     "server-build": "npm run build --prefix server",
     "client-dev": "npm start --prefix client",
     "client-build": "npm run build --prefix client",

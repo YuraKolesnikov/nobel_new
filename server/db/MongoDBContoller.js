@@ -6,7 +6,25 @@ const { Laureate } = require('../models/Laureate')
 class MongoDBController { 
     constructor(model) {
         this.MODEL = model
-        this.keys = ['id', 'firstname', 'surname']
+        this.keys = [
+            'id', 
+            'firstname', 
+            'surname', 
+            'born', 
+            'died', 
+            'bornCountry', 
+            'bornCity',
+            'diedCountry',
+            'diedCity',
+            'gender',
+            'year',
+            'category',
+            'motivation',
+            'affiliations',
+            'name',
+            'city',
+            'country'
+        ]
     }
 
     getLaureates() {
@@ -60,31 +78,13 @@ class MongoDBController {
     }
 
     filterByCategory(req, res) {
-        const category = req.params.category
-        this.MODEL.find({category})
+        const firstname = req.params.firstname
+        this.MODEL.find({firstname})
         .then((laureates) => {
             return !laureates
-            ? res.status(404).send('Unable to find laureates with corresponding category')
+            ? res.status(404).send('Unable to find laureates with corresponding name')
             : res.send({laureates})
         }) 
-        .catch((e) => res.status(400).send(e))
-    }
-
-    filterByDynamicCategory(req, res) {
-        const firstCategory  = req.params.firstCategory
-        const firstParameter = req.params.firstParameter
-        const secondCategory = req.params.secondCategory
-        const secondParameter = req.params.secondParameter
-        console.log(req.params)
-        const where = {}
-        where[firstCategory] = firstParameter
-        where[secondCategory] = secondParameter
-        Laureate.find(where)
-        .then(laureates => {
-            return !laureates
-            ? res.status(404).send('Unable to find laureates with corresponding category')
-            : res.send({laureates})
-        })
         .catch((e) => res.status(400).send(e))
     }
 }

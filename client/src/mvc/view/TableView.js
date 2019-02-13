@@ -19,14 +19,40 @@ class TableView extends View {
         let oTableBody = this._createElement('tbody', {})
         aData.forEach(oItem => {
             let oId      = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.id.toString())
+            if (oItem.id == '467') {
+                console.log(oId)
+            }
             let oName    = this._createElement('td', { className: 'table-body__cell' }, oItem.name)
+            if (oItem.id == '467') {
+                console.log(oName)
+            }
             let oSurname = this._createElement('td', { className: 'table-body__cell' }, oItem.surname)
+            if (oItem.id == '467') {
+                console.log(oSurname)
+            }
             let oBorn    = this._createElement('td', { className: 'table-body__cell' }, oItem.born)
+            if (oItem.id == '467') {
+                console.log(oBorn)
+            }
             let oDied    = this._createElement('td', { className: 'table-body__cell' }, oItem.died)
+            if (oItem.id == '467') {
+                console.log(oDied)
+            }
             let oAge     = this._createElement('td', { className: 'table-body__cell table-body__cell-sm' }, oItem.age.toString())
+            if (oItem.id == '467') {
+                console.log(oAge)
+            }
+            console.log(oItem.country)
             let oCountry = this._createElement('td', { className: 'table-body__cell' }, oItem.country)
+            if (oItem.id == '467') {
+                console.log(oCountry)
+            }
             let oInfo    = this._createElement('td', { className: 'table-body__cell' }, this._reduceObjectToArray(oItem.info).toString())
+            if (oItem.id == '467') {
+                console.log(oInfo)
+            }
             let oBodyRow = this._createElement('tr', { id: oItem.id }, oId, oName, oSurname, oBorn, oDied, oAge, oCountry, oInfo)
+            console.log(oBodyRow)
             oBodyRow.addEventListener('click', this.handleRowClick.bind(this))
             oTableBody.appendChild(oBodyRow)
         }, this)
