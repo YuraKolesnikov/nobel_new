@@ -1,5 +1,5 @@
 /* Importing polyfills for IE11 and styles */
-import './sass/main.scss'
+import './scss/main.scss'
 import '@babel/polyfill'
 /* Bricks */
 import buttons from './mvc/buttons'

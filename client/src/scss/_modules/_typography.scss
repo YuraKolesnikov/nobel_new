@@ -1,19 +1,33 @@
 .title-primary {
-  text-align: center;
-  padding-bottom: 30px;
+  font-size: 3em;
 }
 
 .title-secondary {
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 .text-lead {
-  padding-top: 10px;
   color: $darkGray;
 }
 
 .text-italic {
   font-style: oblique;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .nav-link {

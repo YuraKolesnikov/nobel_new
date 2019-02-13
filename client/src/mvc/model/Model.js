@@ -19,7 +19,8 @@ class Model extends EventEmitter {
     }
 
     _validateValue(value) {
-        return value === undefined ? value = 'Unknown' : value === '0000-00-00' ? value = '-' : value
+        const maybeDate = value === '0000-00-00' ? value = '-' : value
+        return value === undefined ? value = 'Unknown' : maybeDate
     }
     
     getData() {

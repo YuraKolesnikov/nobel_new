@@ -10,7 +10,14 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['@babel/preset-env'] } },
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: 'babel-loader', 
+                query: { 
+                    presets: ['@babel/preset-env'] 
+                } 
+            },
             { 
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
