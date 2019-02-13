@@ -6,7 +6,6 @@ Frontend is build using MVC pattern in OOP paradigm.
 Model fetches data from and to Backend using REST API
 
 ## Technologies
----
 This project uses:
 * **Mongoose** for Mongo database
 * **Express** for Server and API
@@ -14,7 +13,6 @@ This project uses:
 * **Node** for JavaScript runtime
 
 ## Installation
----
 To install this project clone the repo:
 ```
 git clone https://github.com/YuraKolesnikov/nobel_new.git
@@ -39,7 +37,6 @@ npm run install-all
 |`clean`| - |rm build files|
 
 ## Project Structure
----
 **Backend**
 
 `/server`  
@@ -68,7 +65,7 @@ npm run install-all
 ` - Build files
 
 ### Dependencies
-
+---
 **Frontend**
 * `@babel/core: 7.2.2`
 * `@babel/polyfill: 7.2.5`
