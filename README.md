@@ -26,7 +26,7 @@ cd nobel_new
 npm run install-all
 ```
 
-### NPM Scripts
+## NPM Scripts
 
 |Command `npm run`  |Server |Client |
 |--- |:---:|---:|
@@ -64,8 +64,7 @@ npm run install-all
 --/build.js
 ` - Build files
 
-### Dependencies
----
+## Dependencies
 **Frontend**
 * `@babel/core: 7.2.2`
 * `@babel/polyfill: 7.2.5`
