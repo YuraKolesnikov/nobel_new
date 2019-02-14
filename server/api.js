@@ -5,6 +5,7 @@ const { Laureate } = require('./models/Laureate')
 const { MongoDBController } = require('./db/MongoDBContoller')
 const { DataHandler } = require('./db/DataHandler')
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const mongoDBController = new MongoDBController(Laureate)
 const dataHandler = new DataHandler(mongoDBController)
 const router = express.Router()
@@ -21,7 +22,7 @@ router.get('/laureates/:id', (req, res) => {
 })
 
 /* POST Requests */
-router.post('/laureates/add', async (req, res) => {
+router.post('/laureates', urlencodedParser, async (req, res) => {
     await dataHandler.createLaureate(req, res)
 })
 
@@ -31,7 +32,7 @@ router.delete('/laureates/delete/:id', async (req, res) => {
 })
 
 /* PATCH Requests */
-router.patch('/laureates/update/:id', async (req, res) => {
+router.patch('/laureates/patch/:id', async (req, res) => {
     await dataHandler.updateLaureate(req, res)
 })
 

@@ -46,7 +46,8 @@ class MongoDBController {
     }
 
     createLaureate(req, res) {
-        const body = _.pick(req.body, this.keys)
+        const body = _.pick(req.body, 'id', 'firstname', 'surname', 'gender',)
+        console.log(body)
         let laureate = new this.MODEL(body)
 
         laureate.save()

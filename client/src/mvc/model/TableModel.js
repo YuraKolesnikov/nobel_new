@@ -48,6 +48,7 @@ class TableModel extends Model {
     }), this)
     return aMutatedData 
   }
+  
   filterData(oFilter) {
     let sCategory = oFilter.category
     sCategory === 'all' ? sCategory = '' : sCategory

@@ -9,8 +9,8 @@ import buttons from './mvc/buttons'
 /* URL Parser */
 import URLParser     from './router/URLParser'
 /* Model */
-import TableModel    from './mvc/model/Table'
-import SelectorModel from './mvc/model/Selector'
+import TableModel    from './mvc/model/TableModel'
+import SelectorModel from './mvc/model/SelectorModel'
 /* View */
 import TableView     from './mvc/view/TableView'
 import ButtonView    from './mvc/view/ButtonView'
@@ -24,9 +24,9 @@ import Controller    from './mvc/controller/Controller'
 /* Declaring instances */
 /* Model */
 /* Client development */
-const oTableModel = new TableModel('./data/laureate.json')
+//const oTableModel = new TableModel('./data/laureate.json')
 /* Server development */
-//const oTableModel = new TableModel('/api/laureates')
+const oTableModel = new TableModel('/api/laureates')
 console.log(oTableModel._loadData())
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
@@ -51,6 +51,8 @@ Array
 
 oYearSelectorView.renderDropdown(aYearData)
 
+/* Rendering admin controls */
+const adminView = new AdminView()
 /* URL Parser */
 const oURLParser = new URLParser()
 
