@@ -96,8 +96,8 @@ All user endpoints are behind the `/api` endpoint.
 Right now POST, DELETE and PATCH requests are working only from Postman and have no interface in frontend
 
 ---
-**`GET`**  
-`/laureates` - Return a list of all laureates  
+## **`GET`**  
+#### `/laureates` - Return a list of all laureates  
 ### Response  
 * **Success response**  
   * Code: 200
@@ -139,7 +139,7 @@ Right now POST, DELETE and PATCH requests are working only from Postman and have
   * There is no error message, for request is async/await and in error case data just will not load  
 
 
-`/laureates/:id` - Where `:id` is the id of a `laureate`. 
+#### `/laureates/:id` - Where `:id` is the id of a `laureate`. 
 
 ### Response  
 * **Success response**  
@@ -183,8 +183,8 @@ OR
   * Response body: `{ text: 'Unable to find laureate with corresponding ID' }`
 
 ---
-**`POST`**  
-`/laureates/add` - Create a new `laureate` based on the payload of the request
+## **`POST`**  
+#### `/laureates/add` - Create a new `laureate` based on the payload of the request
 
 ### Response  
 * **Success Response**  
@@ -222,8 +222,8 @@ const body = _.pick(req.body, this.keys)
   * Response body: `new Error`
  
 ---
-**`DELETE`**  
-`/laureates/delete/:id` - Delete a laureate matching the `:id` specified
+## **`DELETE`**
+#### `/laureates/delete/:id` - Delete a laureate matching the `:id` specified
 ### Response  
 * **Success Response**  
   * Code: 200  
@@ -234,8 +234,8 @@ const body = _.pick(req.body, this.keys)
 
 
 ---
-**`PATCH`**  
-`/laureates/update/:id` - Update a user based on the payload of the request
+## **`PATCH`**  
+#### `/laureates/update/:id` - Update a user based on the payload of the request
 
 ---
 The client with data can be accessed by hitting this url:
