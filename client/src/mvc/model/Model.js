@@ -13,6 +13,7 @@ class Model extends EventEmitter {
     const res = await fetch(this._sResourceUrl);
     const data = await res.json();
     this._oData = data;
+    console.log(this._oData)
     this.emit('dataLoaded');
   }
 

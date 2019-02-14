@@ -3,6 +3,7 @@ class TableModel extends Model {
   constructor(_sResourceUrl) {
       super(_sResourceUrl)
       this._aFilteredData = []
+      this.ascending = true
   }
 
   _getObjectById(sID) {

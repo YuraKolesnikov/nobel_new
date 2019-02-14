@@ -39,29 +39,53 @@ class MongoDBController {
         this.MODEL.findById(id)
         .then((laureate) => {
             return !laureate
-            ? res.status(404).send('Unable to find laureate with corresponding id')
-            : res.send({laureate})
+            ? res.status(404).send('Unable to find laureate with corresponding ID')
+            : res.status(200).send({laureate})
         }) 
         .catch((e) => res.status(400).send(e))
     }
 
     createLaureate(req, res) {
-        const body = _.pick(req.body, 'id', 'firstname', 'surname', 'gender',)
-        console.log(body)
-        let laureate = new this.MODEL(body)
+        const body = _.pick(req.body, this.keys)
+        const payload = {
+            id: body.id,
+            firstname: body.firstname,
+            surname: body.surname,
+            born: body.born,
+            died: body.died,
+            bornCountry: body.bornCountry,
+            bornCountryCode: body.bornCountryCode,
+            bornCity: body.bornCity,
+            diedCountry: body.diedCountry,
+            diedCountryCode: body.diedCountryCode,
+            diedCity: body.diedCity,
+            gender: body.gender,
+            prizes: [
+                { 
+                    year: body.year, 
+                    category: body.category, 
+                    motivation: body.motivation,
+                    affiliations: [
+                        { name: body.name, city: body.city, country: body.country }
+                    ]
+                }
+            ]
+        }
+        let laureate = new this.MODEL(payload)
 
         laureate.save()
-        .then((laureate) => res.send(laureate))
+        .then((laureate) => res.status(200).send(laureate))
         .catch((e) => res.status(400).send(e))
     }
 
     deleteLaureate(req, res) {
         const id = req.params.id
-        Laureate.findByIdAndRemove(id)
+        Laureate.findOneAndDelete(id)
         .then(laureate => {
+            console.log(laureate)
             return !laureate
             ? res.status(404).send()
-            : res.send({laureate})
+            : res.status(200).send('Laureate successfully deleted')
         })
         .catch((e) => res.status(400).send(e))
     }
@@ -73,7 +97,7 @@ class MongoDBController {
         .then(laureate => {
             return !laureate
             ? res.status(404).send()
-            : res.send({laureate})
+            : res.status(200).send({laureate})
         })
         .catch((e) => res.status(400).send(e))
     }
@@ -84,7 +108,7 @@ class MongoDBController {
         .then((laureates) => {
             return !laureates
             ? res.status(404).send('Unable to find laureates with corresponding name')
-            : res.send({laureates})
+            : res.status(200).send({laureates})
         }) 
         .catch((e) => res.status(400).send(e))
     }

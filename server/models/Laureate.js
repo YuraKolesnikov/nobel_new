@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
 const settings = {
     regular: {
-        type: String,
-        minlength: 1,
-        default: null
+        type: String
     },
     required: {
         type: String,
@@ -32,6 +30,10 @@ module.exports.Laureate = mongoose.model('Laureate', {
     bornCity: settings.regular,
     diedCountry: settings.regular,
     diedCity: settings.regular,
+    prizes: {
+        type: Array,
+        default: []
+    },
     year: settings.regular,
     category: settings.regular,
     motivation: settings.regular,

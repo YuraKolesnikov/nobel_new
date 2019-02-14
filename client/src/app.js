@@ -27,7 +27,6 @@ import Controller    from './mvc/controller/Controller'
 //const oTableModel = new TableModel('./data/laureate.json')
 /* Server development */
 const oTableModel = new TableModel('/api/laureates')
-console.log(oTableModel._loadData())
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
 /* View */

@@ -11,7 +11,7 @@ class Controller {
         country: 'all',
         year: 'all'
     };
-
+    
     oModel.on('dataLoaded', this._loadData.bind(this))
     oView.on('sortData', this.sortData.bind(this))
     oView.on('renderModal', this.renderModal.bind(this))
@@ -25,6 +25,7 @@ class Controller {
     const aData = this.oModel.filterData(this._oFilter)
     this.oView.renderTable(aData);
     this.oURLParser.getUrl(this._oFilter)
+    this.sortData()
   }
   
   sortData(id) {
