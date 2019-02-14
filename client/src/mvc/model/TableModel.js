@@ -4,6 +4,12 @@ class TableModel extends Model {
       super(_sResourceUrl)
       this._aFilteredData = []
       this.ascending = true
+      this.routes = {
+        get: '/api/laureates',
+        post: '/api/laureates',
+        delete: '/api/laureates/delete',
+        patch: '/api/laureates/patch'
+      }
   }
 
   _getObjectById(sID) {
@@ -96,6 +102,24 @@ class TableModel extends Model {
     ? oData.sort((a, b) => sortAscending(a, b))
     : oData.sort((a, b) => sortDescending(a, b))
     return oData
+  }
+
+  async createLaureate(data) {
+    const res = await fetch(this.routes.post);
+    const data = await res.json();
+    console.log(data)
+  }
+
+  async updateLaureate(data) {
+    const res = await fetch(this.routes.patch);
+    const data = await res.json();
+    console.log(data)
+  }
+
+  async deleteLaureate(id) {
+    const res = await fetch(this.routes.delete)
+    const data = await res.json()
+    console.log(data)
   }
 }
 

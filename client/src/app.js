@@ -62,4 +62,4 @@ const oFilterSet = {
     third: oYearSelectorView
 }
 
-const oMainController = new Controller(oTableModel, oTableView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
+const oMainController = new Controller(oTableModel, oTableView, adminView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)

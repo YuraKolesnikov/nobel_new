@@ -1,12 +1,21 @@
 class Controller {
-  constructor(oModel, oView, oFilterSet, oSortingButtons, oModalWindow, oURLParser) {
-    this.oModel  = oModel
-    this.oView   = oView
-    this.oFilterSet = oFilterSet
-    this.oSortingButtons = oSortingButtons
-    this.oModalWindow    = oModalWindow
-    this.oURLParser = oURLParser
-    this._oFilter = {
+  constructor(
+    oModel, 
+    oView, 
+    oAdminView,
+    oFilterSet, 
+    oSortingButtons, 
+    oModalWindow, 
+    oURLParser
+    ) {
+      this.oModel  = oModel
+      this.oView   = oView
+      this.oAdminView = oAdminView
+      this.oFilterSet = oFilterSet
+      this.oSortingButtons = oSortingButtons
+      this.oModalWindow    = oModalWindow
+      this.oURLParser = oURLParser
+      this._oFilter = {
         category: 'all',
         country: 'all',
         year: 'all'
@@ -19,6 +28,9 @@ class Controller {
     this.oFilterSet.second.on('changeCountry', this.filterByCountry.bind(this))
     this.oFilterSet.third.on('changeYear', this.filterByYear.bind(this))
     this.oSortingButtons.on('sortTable', this.sortData.bind(this))
+    oModel.on('laureateCreated', this.createLaureate.bind(this))
+    oModel.on('laureateEdited', this.editLaureate.bind(this))
+    oModel.on('laureateDeleted', this.deleteLaureate.bind(this))
   }
   
   _loadData() {
@@ -51,6 +63,18 @@ class Controller {
   renderModal(id) {
     const oItem = this.oModel._getObjectById(id)
     this.oModalWindow.renderModal(oItem)
+  }
+
+  createLaureate(data) {
+    this.oModel.createLaureate(data)
+  }
+
+  editLaureate(data) {
+    console.log('Editing laureate!')
+  }
+
+  deleteLaureate(id) {
+    console.log('Deleting laureate!')
   }
 }
 
