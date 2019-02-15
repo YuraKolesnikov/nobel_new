@@ -104,22 +104,29 @@ class TableModel extends Model {
     return oData
   }
 
-  async createLaureate(data) {
-    const res = await fetch(this.routes.post);
-    const data = await res.json();
-    console.log(data)
+  createLaureate(data) {
+    return fetch(this.routes.post, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .catch(e => console.log(e))
   }
 
-  async updateLaureate(data) {
-    const res = await fetch(this.routes.patch);
-    const data = await res.json();
-    console.log(data)
+  updateLaureate(data) {
+    const id = data.id
   }
 
-  async deleteLaureate(id) {
-    const res = await fetch(this.routes.delete)
-    const data = await res.json()
-    console.log(data)
+  deleteLaureate(id) {
+    return fetch(`/api/laureates/delete/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .catch(e => console.log(e))
   }
 }
 

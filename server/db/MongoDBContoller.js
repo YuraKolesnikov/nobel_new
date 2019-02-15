@@ -80,9 +80,8 @@ class MongoDBController {
 
     deleteLaureate(req, res) {
         const id = req.params.id
-        Laureate.findOneAndDelete(id)
+        Laureate.findOneAndDelete({id})
         .then(laureate => {
-            console.log(laureate)
             return !laureate
             ? res.status(404).send()
             : res.status(200).send('Laureate successfully deleted')
