@@ -24,9 +24,9 @@ import Controller    from './mvc/controller/Controller'
 /* Declaring instances */
 /* Model */
 /* Client development */
-//const oTableModel = new TableModel('./data/laureate.json')
+const oTableModel = new TableModel('./data/laureate.json')
 /* Server development */
-const oTableModel = new TableModel('/api/laureates')
+//const oTableModel = new TableModel('/api/laureates')
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
 /* View */
@@ -52,7 +52,19 @@ oYearSelectorView.renderDropdown(aYearData)
 
 /* Rendering admin controls */
 const adminView = new AdminView()
-adminView.renderPostForm('sidebar', forms.createLaureateForm)
+
+const createLaureate = () => console.log('Creating laureate! Yahoo!')
+const createButton = adminView.renderButton('Create', createLaureate, 'createLaureate', 'btn btn-primary')
+document.getElementById('sidebar').appendChild(createButton)
+createButton.addEventListener('click', () => {
+    adminView.renderPostForm('modal_form', forms.createLaureateForm)
+})
+
+const testButton = adminView.renderButton('Test', createLaureate, 'test', 'btn btn-primary')
+document.getElementById('sidebar').appendChild(testButton)
+testButton.addEventListener('click', () => {
+    adminView.renderPatchForm('modal_form')
+})
 /* URL Parser */
 const oURLParser = new URLParser()
 

@@ -10,5 +10,11 @@
 @import '_modules/tables';
 @import '_modules/typography';
 
+.modal-form {
+  display: absolute;
+  top: 0;
+  left: 0;
+  max-width: 600px;
+}
 /* Always at the end */
 @import '_utilities/media'

@@ -5,6 +5,8 @@ class AdminView extends View {
   }
 
   renderPostForm(parent, { bio, gender, prizes, affiliations }) {
+    const rootElement = document.getElementById(parent)
+    this._clearContainer.call(rootElement)
     /* Creating form */
     let postForm = this._createElement('form', { className: 'test', })
     /* Creating bio */
@@ -45,6 +47,7 @@ class AdminView extends View {
 
     const submitButton = this._createElement('input', { type: 'submit', name: 'Submit' }, 'Submit')
     postForm.appendChild(submitButton)
+
     /* Subscribing for event */
     postForm.addEventListener('submit', (e) => {
       e.preventDefault()
@@ -61,23 +64,25 @@ class AdminView extends View {
         }
         dataForEvent[name] = val
       })
-
       //this.emit('laureateCreated', dataForEvent)
       this.emit('laureateUpdated', dataForEvent)
     })
-    document.getElementById(parent).appendChild(postForm)
+    rootElement.appendChild(postForm)
   }
 
   renderPatchForm(parent) {
-    const patchForm = this._createElement('form', { 'method': 'PATCH' })
+    const rootElement = document.getElementById(parent)
+    this._clearContainer.call(rootElement)
+    const myElement = this._createElement('h1', {}, 'Test')
+    rootElement.appendChild(myElement)
+    //const patchForm = this._createElement('form', { 'method': 'PATCH' })
     
-    patchForm.addEventListener('submit', ({target}) => {
+    /* patchForm.addEventListener('submit', ({target}) => {
       target.preventDefault()
-      /* Data - input values, in array or object */
       this.emit('laureateEdited', data)
-    })
+    }) */
 
-    document.getElementById(parent).appendChild(patchForm)
+    //document.getElementById(parent).appendChild(patchForm)
   }
 
   renderDeleteForm(parent) {
@@ -92,8 +97,8 @@ class AdminView extends View {
     document.getElementById(parent).appendChild(deleteForm)
   }
 
-  renderButton(action, name, callback) {
-    const button = this._createElement('button', { 'type': action }, name)
+  renderButton(name, callback, id, classes) {
+    const button = this._createElement('button', { className: classes, id: id }, name)
     button.addEventListener('click', () => callback())
     return button
   }
