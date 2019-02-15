@@ -91,8 +91,9 @@ class MongoDBController {
 
     updateLaureate(req, res) {
         const id = req.params.id
+        console.log(id)
         const body = _.pick(req.body, this.keys)
-        Laureate.findByIdAndUpdate(id, { $set: body }, {new: true})
+        Laureate.findOneAndUpdate({id: id}, { $set: body }, {new: true})
         .then(laureate => {
             return !laureate
             ? res.status(404).send()

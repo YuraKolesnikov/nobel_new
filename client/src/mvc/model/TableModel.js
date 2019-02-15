@@ -117,12 +117,21 @@ class TableModel extends Model {
     .catch(e => console.log(e))
   }
 
-  updateLaureate(data) {
-    const id = data.id
+  updateLaureate(id, data) {
+    return fetch(`${this.routes.patch}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .catch(e => console.log(e))
   }
 
   deleteLaureate(id) {
-    return fetch(`/api/laureates/delete/${id}`, {
+    return fetch(`${this.routes.delete}/${id}`, {
       method: 'DELETE'
     })
     .then(res => res.json())

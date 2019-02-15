@@ -62,5 +62,7 @@ const oFilterSet = {
     third: oYearSelectorView
 }
 
-
+oTableModel.updateLaureate('1001', {
+    'surname': 'Abbey Road'
+})
 const oMainController = new Controller(oTableModel, oTableView, adminView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
