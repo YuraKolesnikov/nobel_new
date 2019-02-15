@@ -29,7 +29,7 @@ class Controller {
     this.oFilterSet.third.on('changeYear', this.filterByYear.bind(this))
     this.oSortingButtons.on('sortTable', this.sortData.bind(this))
     oAdminView.on('laureateCreated', this.createLaureate.bind(this))
-    oAdminView.on('laureateEdited', this.editLaureate.bind(this))
+    oAdminView.on('laureateUpdated', this.editLaureate.bind(this))
     oAdminView.on('laureateDeleted', this.deleteLaureate.bind(this))
   }
   
@@ -73,6 +73,7 @@ class Controller {
   editLaureate(data) {
     console.log('Editing laureate!')
     console.log(data)
+    this.oModel.updateLaureate(data)
   }
 
   deleteLaureate(id) {

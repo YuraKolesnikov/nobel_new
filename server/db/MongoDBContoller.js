@@ -47,6 +47,7 @@ class MongoDBController {
 
     createLaureate(req, res) {
         const body = _.pick(req.body, this.keys)
+        console.log(body)
         const payload = {
             id: body.id,
             firstname: body.firstname,
@@ -91,7 +92,6 @@ class MongoDBController {
 
     updateLaureate(req, res) {
         const id = req.params.id
-        console.log(id)
         const body = _.pick(req.body, this.keys)
         Laureate.findOneAndUpdate({id: id}, { $set: body }, {new: true})
         .then(laureate => {

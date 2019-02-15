@@ -61,8 +61,9 @@ class AdminView extends View {
         }
         dataForEvent[name] = val
       })
-      console.log(dataForEvent)
-      this.emit('laureateCreated', dataForEvent)
+
+      //this.emit('laureateCreated', dataForEvent)
+      this.emit('laureateUpdated', dataForEvent)
     })
     document.getElementById(parent).appendChild(postForm)
   }

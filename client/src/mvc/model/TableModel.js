@@ -117,8 +117,9 @@ class TableModel extends Model {
     .catch(e => console.log(e))
   }
 
-  updateLaureate(id, data) {
-    return fetch(`${this.routes.patch}/${id}`, {
+  updateLaureate(data) {
+    console.log(data)
+    return fetch(`${this.routes.patch}/${data.id}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json, text/plain, */*',
