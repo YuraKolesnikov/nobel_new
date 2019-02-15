@@ -4,15 +4,66 @@ class AdminView extends View {
     super()
   }
 
-  renderPostForm(parent) {
-    const postForm = this._createElement('form', { 'method': 'POST' })
-    
-    postForm.addEventListener('submit', ({target}) => {
-      target.preventDefault()
-      /* Data - input values, in array or object */
-      this.emit('laureateCreated', data)
-    })
+  renderPostForm(parent, { bio, gender, prizes, affiliations }) {
+    /* Creating form */
+    let postForm = this._createElement('form', { className: 'test', })
+    /* Creating bio */
+    bio.forEach(input => {
+      const inputField = this._createElement('input', { type: 'text', name: input.name, placeholder: input.placeholder })
+      postForm.appendChild(inputField)
+    });
 
+    /* Creating gender */
+    const genderSelect = this._createElement('select', { 'data-name': 'gender' })
+    const options = gender.options
+    options.forEach(option => {
+      const o = this._createElement('option', { 'data-id': option.toLowerCase() }, option)
+      genderSelect.appendChild(o)
+    });
+    postForm.appendChild(genderSelect)
+
+    /* Creating prizes */
+    const { year, category, motivation } = prizes
+    const yearInput = this._createElement(year.tag, { type: year.type, name: year.name, placeholder: year.placeholder })
+
+    const categorySelect = this._createElement(category.tag, { 'data-name': 'category' })
+    category.options.forEach(item => {
+      const option = this._createElement('option', {}, item)
+      categorySelect.appendChild(option)
+    })
+    const motivationInput = this._createElement(motivation.tag, { name: motivation.name, placeholder: motivation.placeholder, cols: motivation.size.cols, rows: motivation.size.rows })
+    
+    postForm.appendChild(yearInput)
+    postForm.appendChild(categorySelect)
+    postForm.appendChild(motivationInput)
+
+    /* Creating affiliations */
+    affiliations.forEach(element => {
+      const inputField = this._createElement('input', { type: 'text', name: element.name, placeholder: element.placeholder })
+      postForm.appendChild(inputField)
+    });
+
+    const submitButton = this._createElement('input', { type: 'submit', name: 'Submit' }, 'Submit')
+    postForm.appendChild(submitButton)
+    /* Subscribing for event */
+    postForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const data = Array.from(postForm.elements)
+      const dataForEvent = {}
+      data.forEach(item => {
+        let name = item.name || item.dataset.name
+        let val = item.value || item.dataset.id
+        if (name === 'category' || name === 'gender') {
+          val = val.toLowerCase()
+        }
+        if (name === 'died' && val === null) {
+          val = '0000-00-00'
+        }
+        dataForEvent[name] = val
+      })
+      console.log(dataForEvent)
+      this.emit('laureateCreated', dataForEvent)
+    })
     document.getElementById(parent).appendChild(postForm)
   }
 

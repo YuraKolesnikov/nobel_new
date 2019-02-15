@@ -3,7 +3,7 @@ import './scss/main.scss'
 import '@babel/polyfill'
 /* Bricks */
 import buttons from './mvc/buttons'
-
+import forms from './mvc/forms'
 
 /* Importing modules */
 /* URL Parser */
@@ -52,6 +52,7 @@ oYearSelectorView.renderDropdown(aYearData)
 
 /* Rendering admin controls */
 const adminView = new AdminView()
+adminView.renderPostForm('sidebar', forms.createLaureateForm)
 /* URL Parser */
 const oURLParser = new URLParser()
 
@@ -62,7 +63,7 @@ const oFilterSet = {
     third: oYearSelectorView
 }
 
-oTableModel.updateLaureate('1001', {
+/* oTableModel.updateLaureate('1001', {
     'surname': 'Abbey Road'
-})
+}) */
 const oMainController = new Controller(oTableModel, oTableView, adminView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)

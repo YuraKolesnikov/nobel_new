@@ -28,9 +28,9 @@ class Controller {
     this.oFilterSet.second.on('changeCountry', this.filterByCountry.bind(this))
     this.oFilterSet.third.on('changeYear', this.filterByYear.bind(this))
     this.oSortingButtons.on('sortTable', this.sortData.bind(this))
-    oModel.on('laureateCreated', this.createLaureate.bind(this))
-    oModel.on('laureateEdited', this.editLaureate.bind(this))
-    oModel.on('laureateDeleted', this.deleteLaureate.bind(this))
+    oAdminView.on('laureateCreated', this.createLaureate.bind(this))
+    oAdminView.on('laureateEdited', this.editLaureate.bind(this))
+    oAdminView.on('laureateDeleted', this.deleteLaureate.bind(this))
   }
   
   _loadData() {
@@ -66,15 +66,18 @@ class Controller {
   }
 
   createLaureate(data) {
+    console.log('Creating laureate!')
     this.oModel.createLaureate(data)
   }
 
   editLaureate(data) {
     console.log('Editing laureate!')
+    console.log(data)
   }
 
   deleteLaureate(id) {
     console.log('Deleting laureate!')
+    console.log(data)
   }
 }
 
