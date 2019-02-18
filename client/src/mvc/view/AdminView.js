@@ -8,7 +8,7 @@ class AdminView extends View {
     const closeButton = target.querySelector('.js-close-button')
     console.log(closeButton)
     closeButton.addEventListener('click', () => {
-      document.getElementById('modal_form').classList.add('hidden')
+      closeButton.closest('#modal_form').classList.add('hidden')
     })
     return closeButton
   }
