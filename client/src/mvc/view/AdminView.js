@@ -4,14 +4,22 @@ class AdminView extends View {
     super()
   }
 
+  _addCloseEvent(target) {
+    const closeButton = target.querySelector('.js-close-button')
+    console.log(closeButton)
+    closeButton.addEventListener('click', () => {
+      document.getElementById('modal_form').classList.add('hidden')
+    })
+    return closeButton
+  }
   renderPostForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
-    rootElement.classList.add('visible')
     rootElement.classList.remove('hidden')
 
     const postForm = this._createElement('form', {})
     postForm.innerHTML = content
+    this._addCloseEvent(postForm)
     /* Subscribing for event */
     postForm.addEventListener('submit', (e) => {
       e.preventDefault()
@@ -29,8 +37,6 @@ class AdminView extends View {
         }
         dataForEvent[name] = val
       })
-      console.log('Data for event')
-      console.log(dataForEvent)
       this.emit('laureateCreated', dataForEvent)
     })
     rootElement.appendChild(postForm)
@@ -39,12 +45,11 @@ class AdminView extends View {
   renderPatchForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
-    rootElement.classList.add('visible')
     rootElement.classList.remove('hidden')
 
     const patchForm = this._createElement('form', {})
     patchForm.innerHTML = content
-    //const patchForm = this._createElement('form', { 'method': 'PATCH' })
+    this._addCloseEvent(patchForm)
     
     patchForm.addEventListener('submit', (e) => {
       e.preventDefault()
@@ -73,11 +78,11 @@ class AdminView extends View {
   renderDeleteForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
-    rootElement.classList.add('visible')
     rootElement.classList.remove('hidden')
 
     const deleteForm = this._createElement('form', {})
     deleteForm.innerHTML = content
+    this._addCloseEvent(deleteForm)
     deleteForm.addEventListener('submit', (e) => {
       e.preventDefault()
       const id = deleteForm.querySelector('input').value

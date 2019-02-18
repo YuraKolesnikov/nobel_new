@@ -53,11 +53,10 @@ class ModalView extends View {
         
     /* Button and link creating */
     oLearnMore = this._createElement('a', { className: 'nav-link', id: 'learn_more', href: `https://www.google.com/search?q=${oItem.firstname}+${oItem.surname}`, target: '_blank' }, 'Learn more')
-    oButtonClose = this._createElement('button', { className: 'btn-modal-close' }, '+')
+    oButtonClose = this._createElement('button', { className: 'btn-modal-close js-close-button' }, '+')
     oButtonClose.addEventListener('click', this._closeWindow.bind(this))
 
     oModalBody = this._createElement('div', { className: 'modal-window__body'}, oDescription , oTitle, oInfoList, oLearnMore, oButtonClose)
-        
     /* Building modalWindow */
     this.oModalWindow.appendChild(oModalHead)
     this.oModalWindow.appendChild(oModalBody)

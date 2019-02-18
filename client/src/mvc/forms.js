@@ -153,10 +153,16 @@ const postForm = `
     </div>
   </div>
 </fieldset>
-<div class="form-submit my-xs m-auto">
-  <button type="submit" class="btn btn-secondary">Submit</button>
-</div>
-<button class="btn btn-form-close">+</button>
+  <div class="container">
+    <div class="row" style="justify-content: space-around; align-items: center;">
+      <div class="col-sm-4">
+        <button type="submit" class="btn d-inline-block btn-create my-xs"><i class="fa fa-plus"></i> Create</button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn d-inline-block btn-secondary js-close-button">Close</button>
+      </div>
+    </div>
+  </div>
 </form>`
 
 const item = {
@@ -277,11 +283,17 @@ const editForm = `
     </div>
   </div>
 </fieldset>
-<div class="form-submit my-xs m-auto">
-  <button type="submit" class="btn btn-secondary">Submit</button>
-</div>
+  <div class="container">
+    <div class="row" style="justify-content: space-around; align-items: center;">
+      <div class="col-sm-4">
+        <button type="submit" class="btn d-inline-block btn-edit my-xs"><i class="fa fa-edit"></i> Edit</button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn d-inline-block btn-secondary js-close-button">Close</button>
+      </div>
+    </div>
+  </div>
 </form>
-<button class="btn btn-form-close">+</button>
 `
 
 const deleteForm = `
@@ -289,9 +301,18 @@ const deleteForm = `
   <h2 class="text-center">Delete laureate</h2>
   <label for="id" class="form-label my-xxs">ID</label>
   <input class="form-control form-control-animated" type="text" id="idForDelete">
-  <button type="submit" class="btn btn-secondary my-xs">Submit</button>
+  <div class="container">
+    <div class="row" style="justify-content: space-around; align-items: center;">
+      <div class="col-sm-4">
+        <button type="submit" class="btn d-inline-block btn-delete my-xs"><i class="fa fa-trash"></i>Delete</button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn d-inline-block btn-secondary js-close-button">Close</button>
+      </div>
+    </div>
+  </div>
 </form>
-<button class="btn btn-form-close">+</button>
+
 `
 
 export default { createLaureateForm, postForm, editForm, deleteForm }

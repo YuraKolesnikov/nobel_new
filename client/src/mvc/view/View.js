@@ -34,6 +34,12 @@ class View extends EventEmitter {
     while(this.firstChild) { this.removeChild(this.firstChild) }
     return this
   }
+
+  _toggleClasses(first, second) {
+    this.classList.add(first)
+    this.classList.remove(second)
+    return this
+  }
 }
 
 export default View

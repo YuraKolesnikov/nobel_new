@@ -1,5 +1,6 @@
 .btn {
   display: block;
+  text-align: left;
   width: 100%;
   border-radius: 5px;
   border: 0;
@@ -26,7 +27,7 @@
     text-transform: uppercase;
     background-color: #333;
     color: #fff;
-    padding: 10px 15px;
+    padding: 12px 15px;
 
     &:hover {
       background-color: #4d4d4d;
@@ -38,15 +39,24 @@
   }
 
   &-delete {
-
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase;
   }
 
-  &-add {
-
+  &-create {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase;
   }
 
   &-edit {
-
+    background-color: #ffc107;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase;
   }
 
   &-modal-close {
@@ -63,15 +73,10 @@
     @include transition(.35s);
     &:hover { transform: translateY(-2px) rotate(45deg) translateZ(0) }
   }
-
-  &-form-close {
-    position: absolute;
-    top: 0;
-    right: -45%;
-    background-color: transparent;
-    border: none;
-    transform: rotate(45deg) translateZ(0);
-    font-size: 24px;
-  }
 }
 
+i.fa {
+  font-size: 20px;
+  margin-right: 5px;
+  transform: translateY(1px);
+}

@@ -1,5 +1,6 @@
 /* Importing polyfills for IE11 and styles */
 import './scss/main.scss'
+import './common'
 import '@babel/polyfill'
 /* Bricks */
 import buttons from './mvc/buttons'
@@ -24,9 +25,9 @@ import Controller    from './mvc/controller/Controller'
 /* Declaring instances */
 /* Model */
 /* Client development */
-//const oTableModel = new TableModel('./data/laureate.json')
+const oTableModel = new TableModel('./data/laureate.json')
 /* Server development */
-const oTableModel = new TableModel('/api/laureates')
+//const oTableModel = new TableModel('/api/laureates')
 const oCountrySelectorModel = new SelectorModel('./data/country.json')
 
 /* View */
@@ -85,3 +86,5 @@ const oFilterSet = {
     'surname': 'Abbey Road'
 }) */
 const oMainController = new Controller(oTableModel, oTableView, adminView, oFilterSet, oHeaderButtons, oModalWindow, oURLParser)
+
+addListeners()
