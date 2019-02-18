@@ -57,13 +57,19 @@ const createLaureate = () => console.log('Creating laureate! Yahoo!')
 const createButton = adminView.renderButton('Create', undefined, 'createLaureate', 'btn btn-primary')
 document.getElementById('sidebar').appendChild(createButton)
 createButton.addEventListener('click', () => {
-    adminView.renderPostForm('modal_form', forms.createLaureateForm)
+    adminView.renderPostForm('modal_form', forms.postForm)
 })
 
-const testButton = adminView.renderButton('Test', undefined, 'test', 'btn btn-primary')
-document.getElementById('sidebar').appendChild(testButton)
-testButton.addEventListener('click', () => {
-    adminView.renderPatchForm('modal_form')
+const editButton = adminView.renderButton('Edit', undefined, 'test', 'btn btn-primary')
+document.getElementById('sidebar').appendChild(editButton)
+editButton.addEventListener('click', () => {
+    adminView.renderPatchForm('modal_form', forms.editForm)
+})
+
+const deleteButton = adminView.renderButton('Delete', undefined, 'deleteLaureate', 'btn btn-primary')
+document.getElementById('sidebar').appendChild(deleteButton)
+deleteButton.addEventListener('click', () => {
+    adminView.renderDeleteForm('modal_form', forms.deleteForm)
 })
 /* URL Parser */
 const oURLParser = new URLParser()

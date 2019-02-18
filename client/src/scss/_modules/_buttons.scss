@@ -5,9 +5,7 @@
   border: 0;
   @include transition(.5s);
   @include pointer;
-  &:hover {
-      @include transparentBackground(0.3); 
-  }
+  
 
   &-block {
     display: block;
@@ -19,6 +17,9 @@
     background-color: transparent;
     color: #fff;
     padding: 15px 0 15px 8px;
+    &:hover {
+      @include transparentBackground(0.3); 
+    }
   }
 
   &-secondary {
@@ -26,6 +27,14 @@
     background-color: #333;
     color: #fff;
     padding: 10px 15px;
+
+    &:hover {
+      background-color: #4d4d4d;
+    }
+
+    &:active, &:focus {
+      background-color: #1a1a1a;
+    }
   }
 
   &-delete {
@@ -43,7 +52,7 @@
   &-modal-close {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0%;
     background-color: transparent;
     border: none;
     transform: rotate(45deg) translateZ(0);
@@ -53,6 +62,16 @@
     @include pointer;
     @include transition(.35s);
     &:hover { transform: translateY(-2px) rotate(45deg) translateZ(0) }
+  }
+
+  &-form-close {
+    position: absolute;
+    top: 0;
+    right: -45%;
+    background-color: transparent;
+    border: none;
+    transform: rotate(45deg) translateZ(0);
+    font-size: 24px;
   }
 }
 

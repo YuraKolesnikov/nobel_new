@@ -4,52 +4,14 @@ class AdminView extends View {
     super()
   }
 
-  renderPostForm(parent, { bio, gender, prizes, affiliations }) {
+  renderPostForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
     rootElement.classList.add('visible')
     rootElement.classList.remove('hidden')
-    /* Creating form */
-    let postForm = this._createElement('form', { className: 'test', })
-    /* Creating bio */
-    bio.forEach(input => {
-      const inputField = this._createElement('input', { type: 'text', name: input.name, placeholder: input.placeholder })
-      postForm.appendChild(inputField)
-    });
 
-    /* Creating gender */
-    const genderSelect = this._createElement('select', { 'data-name': 'gender' })
-    const options = gender.options
-    options.forEach(option => {
-      const o = this._createElement('option', { 'data-id': option.toLowerCase() }, option)
-      genderSelect.appendChild(o)
-    });
-    postForm.appendChild(genderSelect)
-
-    /* Creating prizes */
-    const { year, category, motivation } = prizes
-    const yearInput = this._createElement(year.tag, { type: year.type, name: year.name, placeholder: year.placeholder })
-
-    const categorySelect = this._createElement(category.tag, { 'data-name': 'category' })
-    category.options.forEach(item => {
-      const option = this._createElement('option', {}, item)
-      categorySelect.appendChild(option)
-    })
-    const motivationInput = this._createElement(motivation.tag, { name: motivation.name, placeholder: motivation.placeholder, cols: motivation.size.cols, rows: motivation.size.rows })
-    
-    postForm.appendChild(yearInput)
-    postForm.appendChild(categorySelect)
-    postForm.appendChild(motivationInput)
-
-    /* Creating affiliations */
-    affiliations.forEach(element => {
-      const inputField = this._createElement('input', { type: 'text', name: element.name, placeholder: element.placeholder })
-      postForm.appendChild(inputField)
-    });
-
-    const submitButton = this._createElement('input', { type: 'submit', name: 'Submit' }, 'Submit')
-    postForm.appendChild(submitButton)
-
+    const postForm = this._createElement('form', {})
+    postForm.innerHTML = content
     /* Subscribing for event */
     postForm.addEventListener('submit', (e) => {
       e.preventDefault()
@@ -72,23 +34,32 @@ class AdminView extends View {
     rootElement.appendChild(postForm)
   }
 
-  renderPatchForm(parent) {
+  renderPatchForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
-    const myElement = this._createElement('h1', {}, 'Test')
-    rootElement.appendChild(myElement)
+    rootElement.classList.add('visible')
+    rootElement.classList.remove('hidden')
+
+    const postForm = this._createElement('form', {})
+    postForm.innerHTML = content
     //const patchForm = this._createElement('form', { 'method': 'PATCH' })
     
     /* patchForm.addEventListener('submit', ({target}) => {
       target.preventDefault()
       this.emit('laureateEdited', data)
     }) */
-
+    rootElement.appendChild(postForm)
     //document.getElementById(parent).appendChild(patchForm)
   }
 
-  renderDeleteForm(parent) {
-    const deleteForm = this._createElement('form', { method: 'DELETE' })
+  renderDeleteForm(parent, content) {
+    const rootElement = document.getElementById(parent)
+    this._clearContainer.call(rootElement)
+    rootElement.classList.add('visible')
+    rootElement.classList.remove('hidden')
+
+    const deleteForm = this._createElement('form', {})
+    deleteForm.innerHTML = content
 
     deleteForm.addEventListener('submit', ({target}) => {
       target.preventDefault()
