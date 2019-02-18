@@ -20,3 +20,20 @@
       background: $lightgreen;
   }
 }
+
+.dropdown-secondary {
+  font-size: 1em;
+  font-family: inherit;
+  margin: 0;
+  color: inherit;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  @include pointer;
+  @include transition(.5s);
+
+  &__option {
+    font-family: 'Montserrat Regular';
+  }
+}
