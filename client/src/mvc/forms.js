@@ -41,7 +41,7 @@ const createLaureateForm = {
 }
 
 const postForm = `
-<form style="position: relative;">
+<form style="position: relative;" method="POST">
 <h2 class="text-center">Create laureate</h2>
 <fieldset class="form-group p-left-sm p-right-sm">
   <legend class="form-legend text-center py-xs">Personal data</legend>
@@ -50,17 +50,17 @@ const postForm = `
         <div class="col-sm-5">
           <div class="col-sm-12">
             <label for="firstname" class="form-label my-xxs">Firstname</label>
-            <input class="form-control form-control-animated" type="text" id="firstname">
+            <input class="form-control form-control-animated" type="text" name="firstname" id="firstname">
           </div>
           <div class="col-sm-12">
             <label for="id" class="form-label my-xxs">ID</label>
-            <input class="form-control form-control-animated" type="text" id="id">
+            <input class="form-control form-control-animated" type="text" name="id" id="id">
           </div>
         </div>
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="surname" class="form-label my-xxs">Surname</label>
-          <input class="form-control form-control-animated" type="text" id="surname">
+          <input class="form-control form-control-animated" type="text" name="surname" id="surname">
         </div>
         <div class="col-sm-12">
           <label for="gender" class="form-label my-xxs">Gender</label>
@@ -80,37 +80,37 @@ const postForm = `
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="born" class="form-label my-xxs">Date of birth</label>
-          <input class="form-control form-control-animated" type="text" id="born">
+          <input class="form-control form-control-animated" type="text" name="born" id="born">
         </div>
         <div class="col-sm-12">
           <label for="bornCity" class="form-label my-xxs">City of birth</label>
-          <input class="form-control form-control-animated" type="text" id="bornCity">
+          <input class="form-control form-control-animated" type="text" name="bornCity" id="bornCity">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country of birth</label>
-          <input class="form-control form-control-animated" type="text" id="bornCountry">
+          <input class="form-control form-control-animated" type="text" name="bornCountry" id="bornCountry">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country code</label>
-          <input class="form-control form-control-animated" type="text" id="bornCountryCode">
+          <input class="form-control form-control-animated" type="text" name="bornCountryCode" id="bornCountryCode">
         </div>
       </div>
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="born" class="form-label my-xxs">Date of death</label>
-          <input class="form-control form-control-animated" type="text" id="died">
+          <input class="form-control form-control-animated" type="text" name="died" id="died">
         </div>
         <div class="col-sm-12">
           <label for="bornCity" class="form-label my-xxs">City of death</label>
-          <input class="form-control form-control-animated" type="text" id="diedCity">
+          <input class="form-control form-control-animated" type="text" name="diedCity" id="diedCity">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country of death</label>
-          <input class="form-control form-control-animated" type="text" id="diedCountry">
+          <input class="form-control form-control-animated" type="text" name="diedCountry" id="diedCountry">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country Code</label>
-          <input class="form-control form-control-animated" type="text" id="diedCountryCode">
+          <input class="form-control form-control-animated" type="text" name="diedCountryCode" id="diedCountryCode">
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@ const postForm = `
     <div class="row" style="justify-content: space-around;">
       <div class="col-sm-5">
         <label for="year" class="form-label my-xxs">Year</label>
-        <input class="form-control form-control-animated" type="text" id="year">
+        <input class="form-control form-control-animated" type="text" name="year" id="year">
       </div>
       <div class="col-sm-5">
         <label for="surname" class="form-label my-xxs">Category</label>
@@ -139,16 +139,16 @@ const postForm = `
         <textarea class="form-control form-control-animated" name="motivation" placeholder="Motivation" id="motivation"></textarea>
       </div>
       <div class="col-sm-3">
-        <label for="year" class="form-label my-xxs">Year</label>
-        <input type="text" class="form-control form-control-animated">
+        <label for="name" class="form-label my-xxs">University name</label>
+        <input type="text" class="form-control form-control-animated" name="name" id="name">
       </div>
       <div class="col-sm-3">
         <label for="city" class="form-label my-xxs">City</label>
-        <input type="text" class="form-control form-control-animated">
+        <input type="text" class="form-control form-control-animated" name="city" id="city">
       </div>
       <div class="col-sm-3">
         <label for="country" class="form-label my-xxs">Country</label>
-        <input type="text" class="form-control form-control-animated">
+        <input type="text" class="form-control form-control-animated" name="country" id="country">
       </div>
     </div>
   </div>
@@ -165,7 +165,7 @@ const item = {
   country: 'Latvia'
 }
 const editForm = `
-<form style="position: relative;">
+<form style="position: relative;" method="PATCH">
 <h2 class="text-center">Edit laureate</h2>
 <fieldset class="form-group p-left-sm p-right-sm">
   <legend class="form-legend text-center py-xs">Personal data</legend>
@@ -174,17 +174,17 @@ const editForm = `
         <div class="col-sm-5">
           <div class="col-sm-12">
             <label for="firstname" class="form-label my-xxs">Firstname</label>
-            <input class="form-control form-control-animated" type="text" id="firstname">
+            <input class="form-control form-control-animated" type="text" name="firstname" id="firstname">
           </div>
           <div class="col-sm-12">
             <label for="id" class="form-label my-xxs">ID</label>
-            <input class="form-control form-control-animated" type="text" id="id">
+            <input class="form-control form-control-animated" type="text" name="id" id="id">
           </div>
         </div>
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="surname" class="form-label my-xxs">Surname</label>
-          <input class="form-control form-control-animated" type="text" id="surname">
+          <input class="form-control form-control-animated" type="text" name="surname" id="surname">
         </div>
         <div class="col-sm-12">
           <label for="gender" class="form-label my-xxs">Gender</label>
@@ -204,37 +204,37 @@ const editForm = `
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="born" class="form-label my-xxs">Date of birth</label>
-          <input class="form-control form-control-animated" type="text" id="born">
+          <input class="form-control form-control-animated" type="text" name="born" id="born">
         </div>
         <div class="col-sm-12">
           <label for="bornCity" class="form-label my-xxs">City of birth</label>
-          <input class="form-control form-control-animated" type="text" id="bornCity">
+          <input class="form-control form-control-animated" type="text" name="bornCity" id="bornCity">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country of birth</label>
-          <input class="form-control form-control-animated" type="text" id="bornCountry">
+          <input class="form-control form-control-animated" type="text" name="bornCountry" id="bornCountry">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country code</label>
-          <input class="form-control form-control-animated" type="text" id="bornCountryCode">
+          <input class="form-control form-control-animated" type="text" name="bornCountryCode" id="bornCountryCode">
         </div>
       </div>
       <div class="col-sm-5">
         <div class="col-sm-12">
           <label for="born" class="form-label my-xxs">Date of death</label>
-          <input class="form-control form-control-animated" type="text" id="died">
+          <input class="form-control form-control-animated" type="text" name="died" id="died">
         </div>
         <div class="col-sm-12">
           <label for="bornCity" class="form-label my-xxs">City of death</label>
-          <input class="form-control form-control-animated" type="text" id="diedCity">
+          <input class="form-control form-control-animated" type="text" name="diedCity" id="diedCity">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country of death</label>
-          <input class="form-control form-control-animated" type="text" id="diedCountry">
+          <input class="form-control form-control-animated" type="text" name="diedCountry" id="diedCountry">
         </div>
         <div class="col-sm-12">
           <label for="bornCountry" class="form-label my-xxs">Country Code</label>
-          <input class="form-control form-control-animated" type="text" id="diedCountryCode">
+          <input class="form-control form-control-animated" type="text" name="diedCountryCode" id="diedCountryCode">
         </div>
       </div>
     </div>
@@ -246,7 +246,7 @@ const editForm = `
     <div class="row" style="justify-content: space-around;">
       <div class="col-sm-5">
         <label for="year" class="form-label my-xxs">Year</label>
-        <input class="form-control form-control-animated" type="text" id="year">
+        <input class="form-control form-control-animated" type="text" name="year" id="year" value=${item.year}>
       </div>
       <div class="col-sm-5">
         <label for="surname" class="form-label my-xxs">Category</label>
@@ -263,16 +263,16 @@ const editForm = `
         <textarea class="form-control form-control-animated" name="motivation" placeholder="Motivation" id="motivation"></textarea>
       </div>
       <div class="col-sm-3">
-        <label for="year" class="form-label my-xxs">Year</label>
-        <input type="text" class="form-control form-control-animated" value=${item.year}>
+        <label for="name" class="form-label my-xxs">University name</label>
+        <input type="text" class="form-control form-control-animated" name="name" id="name">
       </div>
       <div class="col-sm-3">
         <label for="city" class="form-label my-xxs">City</label>
-        <input type="text" class="form-control form-control-animated" value="${item.city}">
+        <input type="text" class="form-control form-control-animated" name="city" value="${item.city}">
       </div>
       <div class="col-sm-3">
         <label for="country" class="form-label my-xxs">Country</label>
-        <input type="text" class="form-control form-control-animated" value="${item.country}">
+        <input type="text" class="form-control form-control-animated" name="country" value="${item.country}">
       </div>
     </div>
   </div>
@@ -288,7 +288,7 @@ const deleteForm = `
 <form style="position: relative;">
   <h2 class="text-center">Delete laureate</h2>
   <label for="id" class="form-label my-xxs">ID</label>
-  <input class="form-control form-control-animated" type="text" id="id">
+  <input class="form-control form-control-animated" type="text" id="idForDelete">
   <button type="submit" class="btn btn-secondary my-xs">Submit</button>
 </form>
 <button class="btn btn-form-close">+</button>

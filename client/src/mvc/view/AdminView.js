@@ -15,7 +15,8 @@ class AdminView extends View {
     /* Subscribing for event */
     postForm.addEventListener('submit', (e) => {
       e.preventDefault()
-      const data = Array.from(postForm.elements)
+      const data = Array.from(postForm.querySelectorAll('input, select'))
+      console.log(data)
       const dataForEvent = {}
       data.forEach(item => {
         let name = item.name || item.dataset.name
@@ -27,9 +28,10 @@ class AdminView extends View {
           val = '0000-00-00'
         }
         dataForEvent[name] = val
-        this.emit('laureateUpdated', dataForEvent)
       })
-      
+      console.log('Data for event')
+      console.log(dataForEvent)
+      this.emit('laureateCreated', dataForEvent)
     })
     rootElement.appendChild(postForm)
   }
@@ -40,15 +42,31 @@ class AdminView extends View {
     rootElement.classList.add('visible')
     rootElement.classList.remove('hidden')
 
-    const postForm = this._createElement('form', {})
-    postForm.innerHTML = content
+    const patchForm = this._createElement('form', {})
+    patchForm.innerHTML = content
     //const patchForm = this._createElement('form', { 'method': 'PATCH' })
     
-    /* patchForm.addEventListener('submit', ({target}) => {
-      target.preventDefault()
-      this.emit('laureateEdited', data)
-    }) */
-    rootElement.appendChild(postForm)
+    patchForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const data = Array.from(patchForm.querySelectorAll('input, select'))
+      console.log(data)
+      const dataForEvent = {}
+      data.forEach(item => {
+        let name = item.name || item.dataset.name
+        let val = item.value || item.dataset.id
+        if (name === 'category' || name === 'gender') {
+          val = val.toLowerCase()
+        }
+        if (name === 'died' && val === null) {
+          val = '0000-00-00'
+        }
+        dataForEvent[name] = val
+      })
+      console.log('Data for event')
+      console.log(dataForEvent)
+      this.emit('laureateUpdated', dataForEvent)
+    })
+    rootElement.appendChild(patchForm)
     //document.getElementById(parent).appendChild(patchForm)
   }
 
@@ -60,9 +78,9 @@ class AdminView extends View {
 
     const deleteForm = this._createElement('form', {})
     deleteForm.innerHTML = content
-
-    deleteForm.addEventListener('submit', ({target}) => {
-      target.preventDefault()
+    deleteForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const id = deleteForm.querySelector('input').value
       /* Id - input value */
       this.emit('laureateDeleted', id)
     })

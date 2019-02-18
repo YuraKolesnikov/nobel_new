@@ -118,7 +118,6 @@ class TableModel extends Model {
   }
 
   updateLaureate(data) {
-    console.log(data)
     return fetch(`${this.routes.patch}/${data.id}`, {
       method: 'PATCH',
       headers: {

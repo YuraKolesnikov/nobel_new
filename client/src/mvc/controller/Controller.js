@@ -67,6 +67,7 @@ class Controller {
 
   createLaureate(data) {
     console.log('Creating laureate!')
+    console.log(data)
     this.oModel.createLaureate(data)
   }
 
@@ -78,7 +79,8 @@ class Controller {
 
   deleteLaureate(id) {
     console.log('Deleting laureate!')
-    console.log(data)
+    console.log(id)
+    this.oModel.deleteLaureate(id)
   }
 }
 
