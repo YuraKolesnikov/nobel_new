@@ -1,9 +1,17 @@
 .btn {
   display: block;
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
   @include transition(.5s);
   @include pointer;
   &:hover {
       @include transparentBackground(0.3); 
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
   }
 
   &-primary {
@@ -11,6 +19,13 @@
     background-color: transparent;
     color: #fff;
     padding: 15px 0 15px 8px;
+  }
+
+  &-secondary {
+    text-transform: uppercase;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
   }
 
   &-delete {

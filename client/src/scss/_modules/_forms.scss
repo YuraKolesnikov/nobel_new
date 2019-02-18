@@ -1,0 +1,35 @@
+.form {
+
+  &-legend {
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  &-label {
+    display: block;
+    font-size: 1em;
+  }
+
+  &-control {
+    display: block;
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+
+  &-control-animated {
+    transition: border .5s ease;
+    &:focus {
+      border: 1px solid $blue;
+    }
+  }
+
+  &-submit {
+    width: 20%;
+    text-align: center;
+  }
+}

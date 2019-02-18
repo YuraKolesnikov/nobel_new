@@ -71,6 +71,10 @@ main {
   display: -webkit-flex;
   display: flex;
   flex-flow: row nowrap;
+
+  &-column {
+    flex-flow: column nowrap;
+  }
 }
 
 .d-block {

@@ -54,13 +54,13 @@ oYearSelectorView.renderDropdown(aYearData)
 const adminView = new AdminView()
 
 const createLaureate = () => console.log('Creating laureate! Yahoo!')
-const createButton = adminView.renderButton('Create', createLaureate, 'createLaureate', 'btn btn-primary')
+const createButton = adminView.renderButton('Create', undefined, 'createLaureate', 'btn btn-primary')
 document.getElementById('sidebar').appendChild(createButton)
 createButton.addEventListener('click', () => {
     adminView.renderPostForm('modal_form', forms.createLaureateForm)
 })
 
-const testButton = adminView.renderButton('Test', createLaureate, 'test', 'btn btn-primary')
+const testButton = adminView.renderButton('Test', undefined, 'test', 'btn btn-primary')
 document.getElementById('sidebar').appendChild(testButton)
 testButton.addEventListener('click', () => {
     adminView.renderPatchForm('modal_form')

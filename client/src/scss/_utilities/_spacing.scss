@@ -20,27 +20,27 @@ Paddings and margins
 }
 
 .p-left {
-  &-xxs { padding-left: 5px }
+  &-xxs { padding-left: 5px !important; }
 
-  &-xs { padding-left: 10px }
+  &-xs { padding-left: 10px !important; }
 
-  &-sm { padding-left: 15px }
+  &-sm { padding-left: 15px !important; }
 
-  &-md { padding-left: 20px }
+  &-md { padding-left: 20px !important; }
 
-  &-lg { padding-left: 30px }
+  &-lg { padding-left: 30px !important; }
 }
 
 .p-right {
-  &-xxs { padding-right: 5px }
+  &-xxs { padding-right: 5px !important; }
 
-  &-xs { padding-right: 10px }
+  &-xs { padding-right: 10px !important; }
 
-  &-sm { padding-right: 15px }
+  &-sm { padding-right: 15px !important; }
 
-  &-md { padding-right: 20px }
+  &-md { padding-right: 20px !important; }
 
-  &-lg { padding-right: 30px }
+  &-lg { padding-right: 30px !important; }
 }
 
 .my {
@@ -56,25 +56,32 @@ Paddings and margins
 }
 
 .m-left {
-  &-xxs { margin-left: 5px }
+  &-xxs { margin-left: 5px !important; }
 
-  &-xs { margin-left: 10px }
+  &-xs { margin-left: 10px !important; }
 
-  &-sm { margin-left: 15px }
+  &-sm { margin-left: 15px !important; }
 
-  &-md { margin-left: 20px }
+  &-md { margin-left: 20px !important; }
 
-  &-lg { margin-left: 30px }
+  &-lg { margin-left: 30px !important; }
 }
 
 .m-right {
-  &-xxs { margin-right: 5px }
+  &-xxs { margin-right: 5px !important; }
 
-  &-xs { margin-right: 10px }
+  &-xs { margin-right: 10px !important; }
 
-  &-sm { margin-right: 15px }
+  &-sm { margin-right: 15px !important; }
 
-  &-md { margin-right: 20px }
+  &-md { margin-right: 20px !important; }
 
-  &-lg { margin-right: 30px }
+  &-lg { margin-right: 30px !important; }
+}
+
+.m-auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
 }

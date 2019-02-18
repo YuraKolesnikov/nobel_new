@@ -7,6 +7,8 @@ class AdminView extends View {
   renderPostForm(parent, { bio, gender, prizes, affiliations }) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)
+    rootElement.classList.add('visible')
+    rootElement.classList.remove('hidden')
     /* Creating form */
     let postForm = this._createElement('form', { className: 'test', })
     /* Creating bio */
@@ -63,9 +65,9 @@ class AdminView extends View {
           val = '0000-00-00'
         }
         dataForEvent[name] = val
+        this.emit('laureateUpdated', dataForEvent)
       })
-      //this.emit('laureateCreated', dataForEvent)
-      this.emit('laureateUpdated', dataForEvent)
+      
     })
     rootElement.appendChild(postForm)
   }
@@ -99,7 +101,7 @@ class AdminView extends View {
 
   renderButton(name, callback, id, classes) {
     const button = this._createElement('button', { className: classes, id: id }, name)
-    button.addEventListener('click', () => callback())
+    //button.addEventListener('click', () => callback())
     return button
   }
 }
