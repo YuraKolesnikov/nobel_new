@@ -114,6 +114,7 @@ class TableModel extends Model {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
+    .then(data => alert(`Laureate with id ${data.id} and full name ${data.firstname} ${data.surname} successfully created!`))
     .catch(e => console.log(e))
   }
 
@@ -127,6 +128,7 @@ class TableModel extends Model {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
+    .then(data => alert(`Laureate with id ${data.id} and full name ${data.firstname} ${data.surname} successfully updated!`))
     .catch(e => console.log(e))
   }
 
@@ -135,6 +137,7 @@ class TableModel extends Model {
       method: 'DELETE'
     })
     .then(res => res.json())
+    .then(data => alert(`Laureate with id ${data.id} successfully deleted!`))
     .catch(e => console.log(e))
   }
 }

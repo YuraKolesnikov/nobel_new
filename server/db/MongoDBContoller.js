@@ -39,7 +39,7 @@ class MongoDBController {
         this.MODEL.findById(id)
         .then((laureate) => {
             return !laureate
-            ? res.status(404).send('Unable to find laureate with corresponding ID')
+            ? res.status(404).send()
             : res.status(200).send({laureate})
         }) 
         .catch((e) => res.status(400).send(e))
@@ -86,7 +86,7 @@ class MongoDBController {
         .then(laureate => {
             return !laureate
             ? res.status(404).send()
-            : res.status(200).send('Laureate successfully deleted')
+            : res.status(200).send(laureate)
         })
         .catch((e) => res.status(400).send(e))
     }
@@ -98,7 +98,7 @@ class MongoDBController {
         .then(laureate => {
             return !laureate
             ? res.status(404).send()
-            : res.status(200).send({laureate})
+            : res.status(200).send(laureate)
         })
         .catch((e) => res.status(400).send(e))
     }

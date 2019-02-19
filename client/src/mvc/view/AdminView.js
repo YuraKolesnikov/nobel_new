@@ -12,6 +12,7 @@ class AdminView extends View {
     })
     return closeButton
   }
+  
   renderPostForm(parent, content) {
     const rootElement = document.getElementById(parent)
     this._clearContainer.call(rootElement)

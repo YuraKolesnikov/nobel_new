@@ -86,6 +86,9 @@ main {
 .d-block {
   display: block; }
 
+.d-inline-block {
+  display: inline-block; }
+
 #app {
   position: relative; }
 
@@ -255,6 +258,7 @@ Paddings and margins
 
 .btn {
   display: block;
+  text-align: left;
   width: 100%;
   border-radius: 5px;
   border: 0;
@@ -276,11 +280,26 @@ Paddings and margins
     text-transform: uppercase;
     background-color: #333;
     color: #fff;
-    padding: 10px 15px; }
+    padding: 12px 15px; }
     .btn-secondary:hover {
       background-color: #4d4d4d; }
     .btn-secondary:active, .btn-secondary:focus {
       background-color: #1a1a1a; }
+  .btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase; }
+  .btn-create {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase; }
+  .btn-edit {
+    background-color: #ffc107;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase; }
   .btn-modal-close {
     position: absolute;
     top: 0;
@@ -297,14 +316,11 @@ Paddings and margins
     transition: all 0.35s ease; }
     .btn-modal-close:hover {
       transform: translateY(-2px) rotate(45deg) translateZ(0); }
-  .btn-form-close {
-    position: absolute;
-    top: 0;
-    right: -45%;
-    background-color: transparent;
-    border: none;
-    transform: rotate(45deg) translateZ(0);
-    font-size: 24px; }
+
+i.fa {
+  font-size: 20px;
+  margin-right: 5px;
+  transform: translateY(1px); }
 
 .dropdown-primary {
   -webkit-appearance: none;
@@ -419,14 +435,13 @@ Paddings and margins
   color: black;
   -webkit-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
+  transition: all 0.5s ease;
+  opacity: 1;
+  z-index: 1000; }
   .dialog-window * {
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease; }
-  .dialog-window.visible {
-    opacity: 1;
-    z-index: 1000; }
   .dialog-window.hidden {
     opacity: 0;
     z-index: -1000; }
