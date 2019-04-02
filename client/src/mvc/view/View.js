@@ -15,17 +15,20 @@ class View extends EventEmitter {
   _createElement(sTag, oProps, ...aChildren) {
     const oElement = document.createElement(sTag)
     Object.keys(oProps).forEach(key => {
-        key.startsWith('data-')
+      key.startsWith('data-')
         ? oElement.setAttribute(key, oProps[key])
         : oElement[key] = oProps[key];
     });
-    
+    const regex = /<(.|\n)*?>/
     aChildren.forEach(child => {
-        typeof child === 'string'
-        ? child = document.createTextNode(child)
-        : 0
-    
+      if (typeof child === 'string') {
+        regex.test(child)
+          ? oElement.innerHTML = child
+          : oElement.textContent = child
+      }
+      if (child instanceof HTMLElement) {
         oElement.appendChild(child)
+      }
     });
     return oElement
   }

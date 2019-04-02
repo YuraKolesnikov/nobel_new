@@ -10,7 +10,7 @@
     "server-build": "npm run build --prefix server",
     "client-dev": "npm start --prefix client",
     "client-build": "npm run build --prefix client",
-    "clean": "rm client/public/build.js client/public/build.css rm -rf client/public/fonts"
+    "clean": "rm client/public/build.js  client/public/build.css && rm -rf client/public/fonts && rm -rf client/node_modules && rm -rf server/node_modules"
   },
   "repository": {
     "type": "git",

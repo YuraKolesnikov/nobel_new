@@ -32,7 +32,7 @@ class MongoDBController {
     }
 
     getLaureate(req, res) {
-        const id = req.params.id
+        const {id} = req.params
         if (!ObjectID.isValid(id)) {
             return res.status(404).send('Invalid ID!')
         }
@@ -80,7 +80,7 @@ class MongoDBController {
     }
 
     deleteLaureate(req, res) {
-        const id = req.params.id
+        const {id} = req.params
         console.log(`ID: ${id}`)
         Laureate.findOneAndDelete({id})
         .then(laureate => {
@@ -92,7 +92,7 @@ class MongoDBController {
     }
 
     updateLaureate(req, res) {
-        const id = req.params.id
+        const {id} = req.params
         const body = _.pick(req.body, this.keys)
         Laureate.findOneAndUpdate({id: id}, { $set: body }, {new: true})
         .then(laureate => {
@@ -104,7 +104,7 @@ class MongoDBController {
     }
 
     filterByCategory(req, res) {
-        const firstname = req.params.firstname
+        const {firstname} = req.params
         this.MODEL.find({firstname})
         .then((laureates) => {
             return !laureates

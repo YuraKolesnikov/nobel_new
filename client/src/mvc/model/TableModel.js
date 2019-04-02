@@ -56,15 +56,12 @@ class TableModel extends Model {
     return aMutatedData 
   }
   
-  filterData(oFilter) {
-    let sCategory = oFilter.category
+  filterData({ category: sCategory, country: sCountryCode, year: sYear }) {
+    /* Validating data */
     sCategory === 'all' ? sCategory = '' : sCategory
-
-    let sCountryCode = oFilter.country;
     sCountryCode === 'all' ? sCountryCode = '' : sCountryCode
-
-    let sYear = oFilter.year;
     sYear === 'all' ? sYear = '' : sYear
+
     this._aFilteredData = this._prepareData()
         .filter(object => {
             const oPrizes = object.prizes.filter(item => 
@@ -105,6 +102,7 @@ class TableModel extends Model {
   }
 
   createLaureate(data) {
+    const { id, firstname, surname } = data
     return fetch(this.routes.post, {
       method: 'POST',
       headers: {
@@ -114,12 +112,13 @@ class TableModel extends Model {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(data => alert(`Laureate with id ${data.id} and full name ${data.firstname} ${data.surname} successfully created!`))
+    .then(data => alert(`Laureate with id ${id} and full name ${firstname} ${surname} successfully created!`))
     .catch(e => console.log(e))
   }
 
   updateLaureate(data) {
-    return fetch(`${this.routes.patch}/${data.id}`, {
+    const { id, firstname, surname } = data
+    return fetch(`${this.routes.patch}/${id}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -128,7 +127,7 @@ class TableModel extends Model {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(data => alert(`Laureate with id ${data.id} and full name ${data.firstname} ${data.surname} successfully updated!`))
+    .then(data => alert(`Laureate with id ${id} and full name ${firstname} ${surname} successfully updated!`))
     .catch(e => console.log(e))
   }
 

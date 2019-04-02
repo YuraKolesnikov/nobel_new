@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+const config = require('../config/config')
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost:27017/NobelLaureates', {
+
+mongoose.connect(config.MongoURI, {
     useNewUrlParser: true
 })
 
-module.exports = { mongoose }
+module.exports = {mongoose}

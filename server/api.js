@@ -1,9 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { Laureate } = require('./models/Laureate')
-const { MongoDBController } = require('./db/MongoDBContoller')
-const { DataHandler } = require('./db/DataHandler')
+const {Laureate} = require('./models/Laureate')
+const {MongoDBController} = require('./db/MongoDBContoller')
+const {DataHandler} = require('./db/DataHandler')
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const mongoDBController = new MongoDBController(Laureate)
@@ -17,8 +17,8 @@ router.get('/laureates', async (req, res) => {
     res.status(200).json(data)
 })
 
-router.get('/laureates/:id', (req, res) => {
-    dataHandler.getLaureate(req, res)
+router.get('/laureates/:id', async (req, res) => {
+    await dataHandler.getLaureate(req, res)
 })
 
 /* POST Requests */

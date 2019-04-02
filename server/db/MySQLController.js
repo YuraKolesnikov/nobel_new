@@ -12,4 +12,4 @@ class MySQLController {
   updateLaureate() {}
 }
 
-module.exports = { MySQLController }
+module.exports = {MySQLController}

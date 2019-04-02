@@ -30,15 +30,15 @@ module.exports.Laureate = mongoose.model('Laureate', {
     bornCity: settings.regular,
     diedCountry: settings.regular,
     diedCity: settings.regular,
-    prizes: {
-        type: Array,
-        default: []
-    },
     year: settings.regular,
     category: settings.regular,
     motivation: settings.regular,
     name: settings.regular,
     country: settings.regular,
     city: settings.regular,
-    affiliations: settings.object
+    affiliations: settings.object,
+    prizes: {
+        type: Array,
+        default: []
+    },
 })
